@@ -1,0 +1,40 @@
+#
+# System
+#
+
+# Logs
+logs/
+*.log
+
+# PIDs
+*.pid
+*.seed
+*.pid.lock
+pids
+
+# File manager configs
+.directory
+Thumbs.db
+*.DS_Store
+
+#
+# JavaScript
+#
+# NPM
+.npm/
+node_modules/
+npm-debug.log*
+
+# Node.js
+.node_repl_history
+
+# Yarn
+.yarn-integrity
+yarn-debug.log*
+yarn-error.log*
+
+# Other tools
+.eslintcache
+
+# React Native
+.expo/

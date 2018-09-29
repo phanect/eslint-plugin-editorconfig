@@ -1,0 +1,19 @@
+{
+  "name": "eslint-plugin-editorconfig",
+  "version": "0.0.1",
+  "description": "Report and fix EditorConfig rule violation",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha --reporter dot tests/"
+  },
+  "keywords": [
+    "eslint"
+  ],
+  "author": "Jumpei Ogawa",
+  "license": "MIT"
+}
