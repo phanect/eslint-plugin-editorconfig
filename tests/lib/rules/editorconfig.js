@@ -4,34 +4,34 @@
  */
 "use strict";
 
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // Requirements
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-var rule = require("../../../lib/rules/editorconfig"),
+const rule = require("../../../lib/rules/editorconfig"),
 
-    RuleTester = require("eslint").RuleTester;
+      RuleTester = require("eslint").RuleTester;
 
 
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 // Tests
-//------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 ruleTester.run("editorconfig", rule, {
 
-    valid: [
+  valid: [
 
-        // give me some code that won't trigger a warning
-    ],
+    // give me some code that won't trigger a warning
+  ],
 
-    invalid: [
-        {
-            code: "    console.log(\"failure\");",
-            errors: [{
-                message: "Fill me in.",
-                type: "Me too"
-            }]
-        }
-    ]
+  invalid: [
+    {
+      code: "    console.log(\"failure\");",
+      errors: [{
+        message: "Fill me in.",
+        type: "Me too",
+      }],
+    },
+  ],
 });
