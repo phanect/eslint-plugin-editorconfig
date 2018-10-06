@@ -27,7 +27,7 @@ Like other ESLint plugins,
 {
   // ...
   "rules": {
-    "editorconfig": "error"
+    "editorconfig/editorconfig": "error"
   },
   "plugins": [ "editorconfig" ]
 }
