@@ -19,6 +19,7 @@
   "author": "Jumpei Ogawa",
   "license": "MIT",
   "dependencies": {
+    "editorconfig": "^0.15.0",
     "eslint": "^5.6.1"
   },
   "devDependencies": {
