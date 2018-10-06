@@ -44,6 +44,19 @@ It is recommended to disable them.
 - no-trailing-spaces
 - unicode-bom
 
+If above rules are specified in your .eslintrc, just remove them.
+If they are specified in the extended config, consider adding `plugin:editorconfig/noconflict` to your `extends`.
+
+```json
+{
+  "extends": [
+    "@phanect/phanective",
+    "plugin:editorconfig/noconflict"
+  ],
+  // ...
+}
+
+```
 ## Unsupported Parameters
 
 Some of the EditorConfig parameters are unsupported.

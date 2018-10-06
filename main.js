@@ -5,7 +5,7 @@ module.exports = {
     editorconfig: require("./lib/rules/editorconfig"),
   },
   configs: {
-    "editorconfig-noconflict": {
+    noconflict: {
       rules: {
         "eol-last": "off",
         indent: "off",
