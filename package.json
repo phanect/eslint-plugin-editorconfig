@@ -9,9 +9,13 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha --reporter dot tests/"
+    "test": "mocha --reporter dot tests/**/*"
   },
-  "keywords": [ "eslint", "eslintplugin", "eslint-plugin", "editorconfig" ],
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "editorconfig"
+  ],
   "author": "Jumpei Ogawa",
   "license": "MIT",
   "dependencies": {
