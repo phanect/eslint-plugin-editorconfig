@@ -1,0 +1,72 @@
+version: 2
+
+jobs:
+  build:
+    working_directory: ~/eslint-plugin-editorconfig
+    docker:
+      - image: phanect/ci-javascript
+    steps:
+      - run:
+          name: System Update
+          command: |
+            sudo apt-get update -qq
+            DEBIAN_FRONTEND=noninteractive sudo apt-get dist-upgrade --yes
+
+            sudo npm install --global npm
+
+      # Test
+      - checkout
+      - run: yarn install
+      - run: npm test
+      - run: npx eslint .
+
+      - deploy:
+          command: |
+            echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > "$HOME/.npmrc"
+
+            if [[ -n "$CIRCLE_PULL_REQUEST" ]]; then
+              #
+              # If this build is pull request, check if `version` in package.json
+              # is bumped up correctly in case config.js is/are updated.
+              #
+
+              # Check if config.js is updated in this pull request
+              CONFIG_UPDATED="false"
+              PR_NUMBER="$(echo "$CIRCLE_PULL_REQUEST" | cut --delimiter="/" --fields=7)"
+
+              MODIFIED_FILES="$(curl --silent "https://api.github.com/repos/phanect/eslint-plugin-editorconfig/pulls/${PR_NUMBER}/files" | jq --raw-output ".[] | .filename")"
+
+              for MODIFIED_FILE in $MODIFIED_FILES; do
+                if [[ "$MODIFIED_FILE" = "config.js" ]]; then
+                  CONFIG_UPDATED="true"
+                  break;
+                fi
+              done
+
+              # In case config.js is/are updated, check if `version` in package.json is updated
+
+              if [[ "$CONFIG_UPDATED" = "true" ]]; then
+                NEW_VERSION="$(cat $HOME/eslint-plugin-editorconfig/package.json | jq --raw-output ".version")"
+                if [[ -n "$(npm view "@phanect/eslint-plugin-editorconfig@$NEW_VERSION")" ]]; then
+                  echo -e "$RED@phanect/eslint-plugin-editorconfig@$NEW_VERSION already exists. Did you update version in package.json?$NC\n" > /dev/stderr
+                  exit 1
+                fi
+              fi
+
+              if [[ "$(npm whoami)" != "phanect" ]]; then
+                echo "Cannot login npmjs.com. Check if \$NPM_AUTH_TOKEN is up to date"
+                exit 1
+              fi
+            elif [[ "${CIRCLE_BRANCH}" = "master" ]]; then
+              #
+              # If this build is master branch, deploy to npmjs.com
+              #
+              git clean -dX --force # Remove files written in .gitignore so they are not included in package
+
+              npm publish . --access public
+            else # "${CIRCLE_PULL_REQUEST}" = "" && "${CIRCLE_BRANCH}" != "master"
+              echo "This job is run by neither pull request nor master branch." > /dev/stderr
+              echo "\${CIRCLE_PULL_REQUEST}: \"${CIRCLE_PULL_REQUEST}\""
+              echo "\${CIRCLE_BRANCH}: \"${CIRCLE_BRANCH}\""
+              exit 1
+            fi
