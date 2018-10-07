@@ -2,7 +2,5 @@
   "extends": [
     "config:base"
   ],
-  "packageRules": [{
-    "rangeStrategy": "replace"
-  }]
+  "rangeStrategy": "replace"
 }
