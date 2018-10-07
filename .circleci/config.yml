@@ -22,6 +22,8 @@ jobs:
 
       - deploy:
           command: |
+            REPONAME="eslint-plugin-editorconfig"
+
             echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > "$HOME/.npmrc"
 
             if [[ -n "$CIRCLE_PULL_REQUEST" ]]; then
@@ -34,7 +36,7 @@ jobs:
               CONFIG_UPDATED="false"
               PR_NUMBER="$(echo "$CIRCLE_PULL_REQUEST" | cut --delimiter="/" --fields=7)"
 
-              MODIFIED_FILES="$(curl --silent "https://api.github.com/repos/phanect/eslint-plugin-editorconfig/pulls/${PR_NUMBER}/files" | jq --raw-output ".[] | .filename")"
+              MODIFIED_FILES="$(curl --silent "https://api.github.com/repos/phanect/$REPONAME/pulls/${PR_NUMBER}/files" | jq --raw-output ".[] | .filename")"
 
               for MODIFIED_FILE in $MODIFIED_FILES; do
                 if [[ "$MODIFIED_FILE" = "config.js" ]]; then
@@ -46,9 +48,9 @@ jobs:
               # In case config.js is/are updated, check if `version` in package.json is updated
 
               if [[ "$CONFIG_UPDATED" = "true" ]]; then
-                NEW_VERSION="$(cat $HOME/eslint-plugin-editorconfig/package.json | jq --raw-output ".version")"
-                if [[ -n "$(npm view "@phanect/eslint-plugin-editorconfig@$NEW_VERSION")" ]]; then
-                  echo -e "$RED@phanect/eslint-plugin-editorconfig@$NEW_VERSION already exists. Did you update version in package.json?$NC\n" > /dev/stderr
+                NEW_VERSION="$(cat $HOME/$REPONAME/package.json | jq --raw-output ".version")"
+                if [[ -n "$(npm view "@phanect/$REPONAME@$NEW_VERSION")" ]]; then
+                  echo -e "$RED@phanect/$REPONAME@$NEW_VERSION already exists. Did you update version in package.json?$NC\n" > /dev/stderr
                   exit 1
                 fi
               fi
