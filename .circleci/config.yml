@@ -61,11 +61,16 @@ jobs:
               fi
             elif [[ "${CIRCLE_BRANCH}" = "master" ]]; then
               #
-              # If this build is master branch, deploy to npmjs.com
+              # If this build is master branch and version is updated, deploy to npmjs.com
               #
-              git clean -dX --force # Remove files written in .gitignore so they are not included in package
+              NEW_VERSION="$(cat $HOME/$REPONAME/package.json | jq --raw-output ".version")"
+              if [[ -z "$(npm view "@phanect/$REPONAME@$NEW_VERSION")" ]]; then
+                git clean -dX --force # Remove files written in .gitignore so they are not included in package
 
-              npm publish . --access public
+                npm publish . --access public
+              else
+                echo -e "${RED}Package was not published because version number is not changed.${NC}\n"
+              fi
             else # "${CIRCLE_PULL_REQUEST}" = "" && "${CIRCLE_BRANCH}" != "master"
               echo "This job is run by neither pull request nor master branch." > /dev/stderr
               echo "\${CIRCLE_PULL_REQUEST}: \"${CIRCLE_PULL_REQUEST}\""
