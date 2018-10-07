@@ -49,8 +49,8 @@ jobs:
 
               if [[ "$CONFIG_UPDATED" = "true" ]]; then
                 NEW_VERSION="$(cat $HOME/$REPONAME/package.json | jq --raw-output ".version")"
-                if [[ -n "$(npm view "@phanect/$REPONAME@$NEW_VERSION")" ]]; then
-                  echo -e "$RED@phanect/$REPONAME@$NEW_VERSION already exists. Did you update version in package.json?$NC\n" > /dev/stderr
+                if [[ -n "$(npm view "$REPONAME@$NEW_VERSION")" ]]; then
+                  echo -e "$RED$REPONAME@$NEW_VERSION already exists. Did you update version in package.json?$NC\n" > /dev/stderr
                   exit 1
                 fi
               fi
@@ -64,7 +64,7 @@ jobs:
               # If this build is master branch and version is updated, deploy to npmjs.com
               #
               NEW_VERSION="$(cat $HOME/$REPONAME/package.json | jq --raw-output ".version")"
-              if [[ -z "$(npm view "@phanect/$REPONAME@$NEW_VERSION")" ]]; then
+              if [[ -z "$(npm view "$REPONAME@$NEW_VERSION")" ]]; then
                 git clean -dX --force # Remove files written in .gitignore so they are not included in package
 
                 npm publish . --access public
