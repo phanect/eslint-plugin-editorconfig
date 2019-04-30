@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-editorconfig",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Report and fix EditorConfig rule violation",
   "main": "main.js",
   "directories": {
