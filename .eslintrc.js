@@ -1,10 +1,11 @@
 "use strict";
 
 module.exports = {
+  extends: "plugin:@phanect/js",
   root: true,
-  "extends": "@phanect/phanective",
 
   "env": {
     "node": true
-  }
+  },
+  plugins: [ "@phanect" ]
 };

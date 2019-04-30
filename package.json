@@ -23,7 +23,7 @@
     "eslint": "^5.6.1"
   },
   "devDependencies": {
-    "@phanect/eslint-config-phanective": "latest",
+    "@phanect/eslint-plugin": "latest",
     "mocha": "^5.2.0"
   }
 }
