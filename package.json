@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-editorconfig",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Report and fix EditorConfig rule violation",
   "main": "main.js",
   "directories": {
@@ -23,7 +23,7 @@
     "eslint": "^5.6.1"
   },
   "devDependencies": {
-    "@phanect/eslint-config-phanective": "latest",
-    "mocha": "^5.2.0"
+    "@phanect/eslint-plugin": "latest",
+    "mocha": "^6.0.0"
   }
 }
