@@ -18,13 +18,13 @@ const rule = require("../../../lib/rules/editorconfig"),
 // -----------------------------------------------------------------------------
 
 const configDir = path.join(__dirname, "../../configs"),
-      ruleTester = new RuleTester(),
+      ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2019 }}),
 
       combinations = {
         default: {
           filename: path.join(configDir, "default/target.js"),
           validCode: `'use strict';
-console.log('failure');
+const foo = 0;
 `,
         },
       };
@@ -42,7 +42,7 @@ ruleTester.run("editorconfig", rule, {
       // Indents
       filename: combinations.default.filename,
       code: `'use strict';
-    console.log('failure');
+    const foo = 0;
 `,
       output: combinations.default.validCode,
       errors: [{
@@ -55,7 +55,7 @@ ruleTester.run("editorconfig", rule, {
       // Trailing line break at EOF
       filename: combinations.default.filename,
       code: `'use strict';
-console.log('failure');`,
+const foo = 0;`,
       output: combinations.default.validCode,
       errors: [{
         message: "EditorConfig: Newline required at end of file but not found.",
@@ -65,7 +65,7 @@ console.log('failure');`,
     {
       // Trailing whitespace
       filename: combinations.default.filename,
-      code: "'use strict';" + "        \nconsole.log('failure');\n",
+      code: "'use strict';" + "        \nconst foo = 0;\n",
       output: combinations.default.validCode,
       errors: [{
         message: "EditorConfig: Trailing spaces not allowed.",
