@@ -17,34 +17,28 @@ const rule = require("../../../lib/rules/editorconfig"),
 // Tests
 // -----------------------------------------------------------------------------
 
-const configDir = path.join(__dirname, "../../configs"),
-      ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2019 }}),
-
-      combinations = {
-        default: {
-          filename: path.join(configDir, "default/target.js"),
-          validCode: `'use strict';
-const foo = 0;
-`,
-        },
-      };
+const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2019 }});
 
 ruleTester.run("editorconfig", rule, {
   valid: [
     {
-      filename: combinations.default.filename,
-      code: combinations.default.validCode,
+      filename: path.join(__dirname, "../../configs/default/target.js"),
+      code: `'use strict';
+const foo = 0;
+`,
     },
   ],
 
   invalid: [
     {
       // Indents
-      filename: combinations.default.filename,
+      filename: path.join(__dirname, "../../configs/default/target.js"),
       code: `'use strict';
     const foo = 0;
 `,
-      output: combinations.default.validCode,
+      output: `'use strict';
+const foo = 0;
+`,
       errors: [{
         message: "EditorConfig: Expected indentation of 0 spaces but found 4.",
         line: 2,
@@ -53,10 +47,12 @@ ruleTester.run("editorconfig", rule, {
     },
     {
       // Trailing line break at EOF
-      filename: combinations.default.filename,
+      filename: path.join(__dirname, "../../configs/default/target.js"),
       code: `'use strict';
 const foo = 0;`,
-      output: combinations.default.validCode,
+      output: `'use strict';
+const foo = 0;
+`,
       errors: [{
         message: "EditorConfig: Newline required at end of file but not found.",
         line: 2,
@@ -64,11 +60,23 @@ const foo = 0;`,
     },
     {
       // Trailing whitespace
-      filename: combinations.default.filename,
+      filename: path.join(__dirname, "../../configs/default/target.js"),
       code: "'use strict';" + "        \nconst foo = 0;\n",
-      output: combinations.default.validCode,
+      output: `'use strict';
+const foo = 0;
+`,
       errors: [{
         message: "EditorConfig: Trailing spaces not allowed.",
+        line: 1,
+      }],
+    },
+    {
+      // CRLF
+      filename: path.join(__dirname, "../../configs/default/target.js"),
+      code: "'use strict';\r\nconst foo = 0;\n",
+      output: "'use strict';\nconst foo = 0;\n",
+      errors: [{
+        message: "EditorConfig: Expected linebreaks to be 'LF' but found 'CRLF'.",
         line: 1,
       }],
     },
