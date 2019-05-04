@@ -70,5 +70,15 @@ const foo = 0;
         line: 1,
       }],
     },
+    {
+      // CRLF
+      filename: path.join(__dirname, "../../configs/default/target.js"),
+      code: "'use strict';\r\nconst foo = 0;\n",
+      output: "'use strict';\nconst foo = 0;\n",
+      errors: [{
+        message: "EditorConfig: Expected linebreaks to be 'LF' but found 'CRLF'.",
+        line: 1,
+      }],
+    },
   ],
 });
