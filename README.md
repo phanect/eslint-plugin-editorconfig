@@ -56,6 +56,31 @@ If they are specified in the extended config, consider adding `plugin:editorconf
   // ...
 }
 ```
+
+### Passing options
+
+Internally, eslint-plugin-editorconfig uses above options to verify/fix JS code.
+You can pass options to some rules.
+
+```json
+{
+  // ...
+  "rules": {
+    "editorconfig/editorconfig": [ "error", {
+      "indent": { "VariableDeclarator": { "var": 2, "let": 2, "const": 3 }},
+      "no-trailing-spaces": { "skipBlankLines": true, "ignoreComments": true },
+    }]
+  },
+  "plugins": [ "editorconfig" ]
+}
+```
+
+Currently, following rules are supported.
+See original rule documents for supported options.
+
+- [indent](https://eslint.org/docs/rules/indent)
+- [no-trailing-spaces](https://eslint.org/docs/rules/no-trailing-spaces)
+
 ## Unsupported EditorConfig Parameters
 
 Some of the EditorConfig parameters are unsupported.
