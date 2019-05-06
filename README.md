@@ -55,9 +55,8 @@ If they are specified in the extended config, consider adding `plugin:editorconf
   ],
   // ...
 }
-
 ```
-## Unsupported Parameters
+## Unsupported EditorConfig Parameters
 
 Some of the EditorConfig parameters are unsupported.
 
@@ -65,9 +64,8 @@ Some of the EditorConfig parameters are unsupported.
 When `end_of_line = cr` is specified in .editorconfig, ESLint does nothing.
 
 ### charset
-This plugin works only when `utf-8` or `utf-8-bom` is specified.
+This plugin works only when `utf-8` or `utf-8-bom` is specified. If other value is specified in .editorconfig, charset is not verified by ESLint.
 ESLint only verifies if BOM is specified or not.
-
 
 ## License
 

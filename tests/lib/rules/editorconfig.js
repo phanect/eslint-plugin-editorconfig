@@ -8,9 +8,9 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require("../../../lib/rules/editorconfig"),
-      path = require("path"),
-      RuleTester = require("eslint").RuleTester;
+const rule = require("../../../lib/rules/editorconfig");
+const path = require("path");
+const RuleTester = require("eslint").RuleTester;
 
 
 // -----------------------------------------------------------------------------

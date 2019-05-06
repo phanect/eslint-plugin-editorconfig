@@ -18,6 +18,14 @@
   ],
   "author": "Jumpei Ogawa",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phanect/eslint-plugin-editorconfig.git"
+  },
+  "bugs": {
+    "url": "https://github.com/phanect/eslint-plugin-editorconfig/issues"
+  },
+  "homepage": "https://github.com/phanect/eslint-plugin-editorconfig",
   "dependencies": {
     "editorconfig": "^0.15.0",
     "eslint": "^5.6.1"
