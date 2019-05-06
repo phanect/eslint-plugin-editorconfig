@@ -27,6 +27,63 @@ ruleTester.run("editorconfig", rule, {
 const foo = 0;
 `,
     },
+    {
+      // Passing Options (indent)
+      filename: path.join(__dirname, "../../configs/default/target.js"),
+      options: [{ indent: { VariableDeclarator: { var: 2, let: 2, const: 3 }}}],
+      code: `'use strict';
+const foo = 'foo',
+      bar = 'bar',
+      hoge = {
+        fuga: 'fuga',
+      };
+let a = 'a',
+    b = 'b',
+    c = {
+      d: 'd',
+    };
+var e = 'e',
+    s = 's',
+    l = {
+      i: 'i',
+      n: 'n',
+      t: 't',
+    };
+`,
+    },
+    {
+      // Passing Options (no-trailing-spaces)
+      filename: path.join(__dirname, "../../configs/default/target.js"),
+      options: [{ "no-trailing-spaces": { skipBlankLines: true, ignoreComments: true }}],
+      code: "'use strict'; console.log('foo')\n    \n// bar    \n",
+    },
+    {
+      // Passing Options (options for multiple rules)
+      filename: path.join(__dirname, "../../configs/default/target.js"),
+      options: [{
+        indent: { VariableDeclarator: { var: 2, let: 2, const: 3 }},
+        "no-trailing-spaces": { skipBlankLines: true, ignoreComments: true },
+      }],
+      code: `'use strict';
+const foo = 'foo',
+      bar = 'bar',
+      hoge = {
+        fuga: 'fuga',
+      };
+let a = 'a',
+    b = 'b',
+    c = {
+      d: 'd',
+    };
+var e = 'e',
+    s = 's',
+    l = {
+      i: 'i',
+      n: 'n',
+      t: 't',
+    };
+` + "console.log('foo')\n    \n// bar    \n",
+    },
   ],
 
   invalid: [
@@ -79,6 +136,79 @@ const foo = 0;
         message: "EditorConfig: Expected linebreaks to be 'LF' but found 'CRLF'.",
         line: 1,
       }],
+    },
+    {
+      // Passing Options (indent)
+      filename: path.join(__dirname, "../../configs/default/target.js"),
+      options: [{ indent: { VariableDeclarator: { var: 2, let: 2, const: 3 }}}],
+      code: `'use strict';
+const foo = 'foo',
+  bar = 'bar';
+let a = 'a',
+  b = 'b';
+var e = 'e',
+  s = 's';
+`,
+      output: `'use strict';
+const foo = 'foo',
+      bar = 'bar';
+let a = 'a',
+    b = 'b';
+var e = 'e',
+    s = 's';
+`,
+      errors: [
+        {
+          message: "EditorConfig: Expected indentation of 6 spaces but found 2.",
+          line: 3,
+        },
+        {
+          message: "EditorConfig: Expected indentation of 4 spaces but found 2.",
+          line: 5,
+        },
+        {
+          message: "EditorConfig: Expected indentation of 4 spaces but found 2.",
+          line: 7,
+        },
+      ],
+    },
+    {
+      // Passing Options (options for multiple rules)
+      filename: path.join(__dirname, "../../configs/default/target.js"),
+      options: [{
+        indent: { VariableDeclarator: { var: 2, let: 2, const: 3 }},
+        "no-trailing-spaces": { skipBlankLines: true, ignoreComments: true },
+      }],
+      code: `'use strict';
+const foo = 'foo',
+  bar = 'bar';
+let a = 'a',
+  b = 'b';
+var e = 'e',
+  s = 's';
+`,
+      output: `'use strict';
+const foo = 'foo',
+      bar = 'bar';
+let a = 'a',
+    b = 'b';
+var e = 'e',
+    s = 's';
+`,
+      errors: [
+        {
+          message: "EditorConfig: Expected indentation of 6 spaces but found 2.",
+          line: 3,
+        },
+        {
+          message: "EditorConfig: Expected indentation of 4 spaces but found 2.",
+          line: 5,
+        },
+        {
+          message: "EditorConfig: Expected indentation of 4 spaces but found 2.",
+          line: 7,
+        },
+      ],
     },
   ],
 });
