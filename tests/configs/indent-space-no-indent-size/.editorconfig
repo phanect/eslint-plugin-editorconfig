@@ -1,0 +1,11 @@
+# Dummy .editorconfig for testing
+# indent_style = space specified but no indent_size specified
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true

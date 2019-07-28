@@ -215,5 +215,19 @@ var e: string = 'e',
         },
       ],
     },
+    {
+      filename: path.join(__dirname, "../../configs/indent-space-no-indent-size/target.ts"),
+
+      code: `'use strict';
+const foo: string = "bar";
+if (true) {
+  console.log("foo");
+}
+`,
+      errors: [{
+        message: "EditorConfig: indent_size is not set in .editorconfig",
+        line: 1,
+      }],
+    },
   ],
 });

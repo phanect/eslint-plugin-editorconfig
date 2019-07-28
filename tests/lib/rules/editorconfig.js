@@ -210,5 +210,18 @@ var e = 'e',
         },
       ],
     },
+    {
+      filename: path.join(__dirname, "../../configs/indent-space-no-indent-size/target.js"),
+
+      code: `'use strict';
+if (true) {
+  console.log("foo");
+}
+`,
+      errors: [{
+        message: "EditorConfig: indent_size is not set in .editorconfig",
+        line: 1,
+      }],
+    },
   ],
 });
