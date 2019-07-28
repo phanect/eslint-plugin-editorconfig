@@ -17,34 +17,39 @@ const RuleTester = require("eslint").RuleTester;
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2019 }});
+const ruleTester = new RuleTester({
+  parser: require.resolve("@typescript-eslint/parser"),
+  parserOptions: {
+    ecmaVersion: 2019,
+  },
+});
 
-ruleTester.run("editorconfig (javascript)", rule, {
+ruleTester.run("editorconfig (typescript)", rule, {
   valid: [
     {
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: path.join(__dirname, "../../configs/default/target.ts"),
       code: `'use strict';
-const foo = 0;
+const foo: number = 0;
 `,
     },
     {
       // Passing Options (indent)
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: path.join(__dirname, "../../configs/default/target.ts"),
       options: [{ indent: { VariableDeclarator: { var: 2, let: 2, const: 3 }}}],
       code: `'use strict';
-const foo = 'foo',
-      bar = 'bar',
-      hoge = {
+const foo: string = 'foo',
+      bar: string = 'bar',
+      hoge: { fuga: string } = {
         fuga: 'fuga',
       };
-let a = 'a',
-    b = 'b',
-    c = {
+let a: string = 'a',
+    b: string = 'b',
+    c: { d: string } = {
       d: 'd',
     };
-var e = 'e',
-    s = 's',
-    l = {
+var e: string = 'e',
+    s: string = 's',
+    l: { i: string, n: string, t: string } = {
       i: 'i',
       n: 'n',
       t: 't',
@@ -53,31 +58,31 @@ var e = 'e',
     },
     {
       // Passing Options (no-trailing-spaces)
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: path.join(__dirname, "../../configs/default/target.ts"),
       options: [{ "no-trailing-spaces": { skipBlankLines: true, ignoreComments: true }}],
       code: "'use strict'; console.log('foo')\n    \n// bar    \n",
     },
     {
       // Passing Options (options for multiple rules)
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: path.join(__dirname, "../../configs/default/target.ts"),
       options: [{
         indent: { VariableDeclarator: { var: 2, let: 2, const: 3 }},
         "no-trailing-spaces": { skipBlankLines: true, ignoreComments: true },
       }],
       code: `'use strict';
-const foo = 'foo',
-      bar = 'bar',
-      hoge = {
+const foo: string = 'foo',
+      bar: string = 'bar',
+      hoge: { fuga: string } = {
         fuga: 'fuga',
       };
-let a = 'a',
-    b = 'b',
-    c = {
+let a: string = 'a',
+    b: string = 'b',
+    c: { d: string } = {
       d: 'd',
     };
-var e = 'e',
-    s = 's',
-    l = {
+var e: string = 'e',
+    s: string = 's',
+    l: { i: string , n: string, t: string } = {
       i: 'i',
       n: 'n',
       t: 't',
@@ -89,12 +94,12 @@ var e = 'e',
   invalid: [
     {
       // Indents
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: path.join(__dirname, "../../configs/default/target.ts"),
       code: `'use strict';
-    const foo = 0;
+    const foo: number = 0;
 `,
       output: `'use strict';
-const foo = 0;
+const foo: number = 0;
 `,
       errors: [{
         message: "EditorConfig: Expected indentation of 0 spaces but found 4.",
@@ -104,11 +109,11 @@ const foo = 0;
     },
     {
       // Trailing line break at EOF
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: path.join(__dirname, "../../configs/default/target.ts"),
       code: `'use strict';
-const foo = 0;`,
+const foo: number = 0;`,
       output: `'use strict';
-const foo = 0;
+const foo: number = 0;
 `,
       errors: [{
         message: "EditorConfig: Newline required at end of file but not found.",
@@ -117,10 +122,10 @@ const foo = 0;
     },
     {
       // Trailing whitespace
-      filename: path.join(__dirname, "../../configs/default/target.js"),
-      code: "'use strict';" + "        \nconst foo = 0;\n",
+      filename: path.join(__dirname, "../../configs/default/target.ts"),
+      code: "'use strict';" + "        \nconst foo: number = 0;\n",
       output: `'use strict';
-const foo = 0;
+const foo: number = 0;
 `,
       errors: [{
         message: "EditorConfig: Trailing spaces not allowed.",
@@ -129,9 +134,9 @@ const foo = 0;
     },
     {
       // CRLF
-      filename: path.join(__dirname, "../../configs/default/target.js"),
-      code: "'use strict';\r\nconst foo = 0;\n",
-      output: "'use strict';\nconst foo = 0;\n",
+      filename: path.join(__dirname, "../../configs/default/target.ts"),
+      code: "'use strict';\r\nconst foo: number = 0;\n",
+      output: "'use strict';\nconst foo: number = 0;\n",
       errors: [{
         message: "EditorConfig: Expected linebreaks to be 'LF' but found 'CRLF'.",
         line: 1,
@@ -139,23 +144,23 @@ const foo = 0;
     },
     {
       // Passing Options (indent)
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: path.join(__dirname, "../../configs/default/target.ts"),
       options: [{ indent: { VariableDeclarator: { var: 2, let: 2, const: 3 }}}],
       code: `'use strict';
-const foo = 'foo',
-  bar = 'bar';
-let a = 'a',
-  b = 'b';
-var e = 'e',
-  s = 's';
+const foo: string = 'foo',
+  bar: string = 'bar';
+let a: string = 'a',
+  b: string = 'b';
+var e: string = 'e',
+  s: string = 's';
 `,
       output: `'use strict';
-const foo = 'foo',
-      bar = 'bar';
-let a = 'a',
-    b = 'b';
-var e = 'e',
-    s = 's';
+const foo: string = 'foo',
+      bar: string = 'bar';
+let a: string = 'a',
+    b: string = 'b';
+var e: string = 'e',
+    s: string = 's';
 `,
       errors: [
         {
@@ -174,26 +179,26 @@ var e = 'e',
     },
     {
       // Passing Options (options for multiple rules)
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: path.join(__dirname, "../../configs/default/target.ts"),
       options: [{
         indent: { VariableDeclarator: { var: 2, let: 2, const: 3 }},
         "no-trailing-spaces": { skipBlankLines: true, ignoreComments: true },
       }],
       code: `'use strict';
-const foo = 'foo',
-  bar = 'bar';
-let a = 'a',
-  b = 'b';
-var e = 'e',
-  s = 's';
+const foo: string = 'foo',
+  bar: string = 'bar';
+let a: string = 'a',
+  b: string = 'b';
+var e: string = 'e',
+  s: string = 's';
 `,
       output: `'use strict';
-const foo = 'foo',
-      bar = 'bar';
-let a = 'a',
-    b = 'b';
-var e = 'e',
-    s = 's';
+const foo: string = 'foo',
+      bar: string = 'bar';
+let a: string = 'a',
+    b: string = 'b';
+var e: string = 'e',
+    s: string = 's';
 `,
       errors: [
         {

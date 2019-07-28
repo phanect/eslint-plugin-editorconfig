@@ -1,0 +1,6 @@
+.circleci/
+.editorconfig
+.eslintrc.js
+node_modules/
+tests/
+renovate.json
