@@ -9,7 +9,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha --reporter dot tests/**/*"
+    "test": "mocha --reporter dot tests/**/*",
+    "lint": "eslint .",
+    "release": "npm publish . --access public"
   },
   "keywords": [
     "eslint",

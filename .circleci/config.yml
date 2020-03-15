@@ -25,7 +25,7 @@ jobs:
     steps:
       - init
       - run: npm test
-      - run: npx eslint .
+      - run: npm run lint
 
   release:
     executor:
@@ -34,7 +34,7 @@ jobs:
       - init
       - run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > "$HOME/.npmrc"
-          npm publish . --access public
+          npm run release
 
 workflows:
   version: 2.1
