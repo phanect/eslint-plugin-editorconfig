@@ -33,8 +33,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# lockfiles are ignored in npm modules
+package-lock.json
+yarn.lock
+
 # Other tools
 .eslintcache
-
-# React Native
-.expo/
