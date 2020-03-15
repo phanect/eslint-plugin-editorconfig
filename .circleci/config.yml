@@ -16,7 +16,7 @@ commands:
             DEBIAN_FRONTEND=noninteractive sudo apt-get dist-upgrade --yes
             sudo npm install --global npm
       - checkout
-      - run: yarn install
+      - run: npm install # not `npm ci` since there is no package-lock.json in this project
 
 jobs:
   build:
