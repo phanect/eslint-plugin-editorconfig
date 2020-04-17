@@ -3,6 +3,7 @@
 ESLint plugin to follow EditorConfig
 
 [![CircleCI](https://circleci.com/gh/phanect/eslint-plugin-editorconfig.svg?style=svg)](https://circleci.com/gh/phanect/eslint-plugin-editorconfig) [![NPM Version](https://img.shields.io/npm/v/eslint-plugin-editorconfig.svg)](https://npmjs.org/package/eslint-plugin-editorconfig)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fphanect%2Feslint-plugin-editorconfig.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fphanect%2Feslint-plugin-editorconfig?ref=badge_shield)
 
 ## Install
 
@@ -95,3 +96,6 @@ ESLint only verifies if BOM is specified or not.
 ## License
 
 [MIT](http://vjpr.mit-license.org)
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fphanect%2Feslint-plugin-editorconfig.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fphanect%2Feslint-plugin-editorconfig?ref=badge_large)
