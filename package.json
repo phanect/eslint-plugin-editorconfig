@@ -30,7 +30,7 @@
   "homepage": "https://github.com/phanect/eslint-plugin-editorconfig",
   "dependencies": {
     "editorconfig": "^0.15.0",
-    "eslint": "^6.0.0"
+    "eslint": "^7.0.0"
   },
   "devDependencies": {
     "@phanect/eslint-plugin": "latest",
