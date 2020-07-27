@@ -30,12 +30,12 @@
   "homepage": "https://github.com/phanect/eslint-plugin-editorconfig",
   "dependencies": {
     "editorconfig": "^0.15.0",
-    "eslint": "^6.0.0"
+    "eslint": "^7.0.0"
   },
   "devDependencies": {
     "@phanect/eslint-plugin": "latest",
-    "@typescript-eslint/eslint-plugin": "^2.0.0",
-    "@typescript-eslint/parser": "^2.0.0",
-    "mocha": "^7.0.0"
+    "@typescript-eslint/eslint-plugin": "latest",
+    "@typescript-eslint/parser": "latest",
+    "mocha": "^8.0.0"
   }
 }
