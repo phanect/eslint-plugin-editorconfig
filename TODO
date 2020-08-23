@@ -1,0 +1,13 @@
+/* eslint-disable node/... */ などと、プラグイン配下のルールを無効化しようとした際に、そのルールは存在しないとエラーが出る。(通常のエラーまで EditorConfig ルールのエラーとして報告されてしまう)
+
+例えば indent_size が .editorconfig に書いていない場合などが考慮されていない
+
+globals に定義された globals が渡されているかどうか
+
+Vue や React で動くか
+
+eslint-disable などのディレクティブが効くかチェック
+
+indent_style が space でも tab でもない時にエラーを出す。
+
+TypeScript の時は @typescript-eslint/indent など、@typescript-eslint のルールを代わりに使う。
