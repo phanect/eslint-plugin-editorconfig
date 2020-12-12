@@ -8,7 +8,6 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require("../../../lib/rules/editorconfig");
 const path = require("path");
 const RuleTester = require("eslint").RuleTester;
 
@@ -24,18 +23,43 @@ const ruleTester = new RuleTester({
   },
 });
 
-ruleTester.run("editorconfig (typescript)", rule, {
-  valid: [
-    {
-      filename: path.join(__dirname, "../../configs/default/target.ts"),
-      code: `'use strict';
+const commonValidTests = [
+  {
+    filename: path.join(__dirname, "../../configs/default/target.ts"),
+    code: `'use strict';
 const foo: number = 0;
 `,
-    },
+  },
+];
+
+ruleTester.run("editorconfig/charset (typescript)", require("../../../lib/rules/charset"), {
+  valid: commonValidTests,
+  invalid: [], // TODO
+});
+
+ruleTester.run("editorconfig/eol-last (typescript)", require("../../../lib/rules/eol-last"), {
+  valid: commonValidTests,
+  invalid: [{
+    filename: path.join(__dirname, "../../configs/default/target.ts"),
+    code: `'use strict';
+const foo: number = 0;`,
+    output: `'use strict';
+const foo: number = 0;
+`,
+    errors: [{
+      message: "Newline required at end of file but not found.",
+      line: 2,
+    }],
+  }],
+});
+
+ruleTester.run("editorconfig/indent (typescript)", require("../../../lib/rules/indent"), {
+  valid: [
+    ...commonValidTests,
     {
       // Passing Options (indent)
       filename: path.join(__dirname, "../../configs/default/target.ts"),
-      options: [{ indent: { VariableDeclarator: { var: 2, let: 2, const: 3 }}}],
+      options: [{ VariableDeclarator: { var: 2, let: 2, const: 3 }}],
       code: `'use strict';
 const foo: string = 'foo',
       bar: string = 'bar',
@@ -56,44 +80,9 @@ var e: string = 'e',
     };
 `,
     },
-    {
-      // Passing Options (no-trailing-spaces)
-      filename: path.join(__dirname, "../../configs/default/target.ts"),
-      options: [{ "no-trailing-spaces": { skipBlankLines: true, ignoreComments: true }}],
-      code: "'use strict'; console.log('foo')\n    \n// bar    \n",
-    },
-    {
-      // Passing Options (options for multiple rules)
-      filename: path.join(__dirname, "../../configs/default/target.ts"),
-      options: [{
-        indent: { VariableDeclarator: { var: 2, let: 2, const: 3 }},
-        "no-trailing-spaces": { skipBlankLines: true, ignoreComments: true },
-      }],
-      code: `'use strict';
-const foo: string = 'foo',
-      bar: string = 'bar',
-      hoge: { fuga: string } = {
-        fuga: 'fuga',
-      };
-let a: string = 'a',
-    b: string = 'b',
-    c: { d: string } = {
-      d: 'd',
-    };
-var e: string = 'e',
-    s: string = 's',
-    l: { i: string , n: string, t: string } = {
-      i: 'i',
-      n: 'n',
-      t: 't',
-    };
-` + "console.log('foo')\n    \n// bar    \n",
-    },
   ],
-
   invalid: [
     {
-      // Indents
       filename: path.join(__dirname, "../../configs/default/target.ts"),
       code: `'use strict';
     const foo: number = 0;
@@ -102,118 +91,116 @@ var e: string = 'e',
 const foo: number = 0;
 `,
       errors: [{
-        message: "EditorConfig: Expected indentation of 0 spaces but found 4.",
+        message: "Expected indentation of 0 spaces but found 4.",
         line: 2,
-        column: 2,
+        column: 1,
       }],
     },
     {
-      // Trailing line break at EOF
+      // Passing Options
       filename: path.join(__dirname, "../../configs/default/target.ts"),
+      options: [{ VariableDeclarator: { var: 2, let: 2, const: 3 }}],
       code: `'use strict';
-const foo: number = 0;`,
-      output: `'use strict';
-const foo: number = 0;
+const foo: string = 'foo',
+  bar: string = 'bar';
+let a: string = 'a',
+  b: string = 'b';
+var e: string = 'e',
+  s: string = 's';
 `,
-      errors: [{
-        message: "EditorConfig: Newline required at end of file but not found.",
-        line: 2,
-      }],
+      output: `'use strict';
+const foo: string = 'foo',
+      bar: string = 'bar';
+let a: string = 'a',
+    b: string = 'b';
+var e: string = 'e',
+    s: string = 's';
+`,
+      errors: [
+        {
+          message: "Expected indentation of 6 spaces but found 2.",
+          line: 3,
+        },
+        {
+          message: "Expected indentation of 4 spaces but found 2.",
+          line: 5,
+        },
+        {
+          message: "Expected indentation of 4 spaces but found 2.",
+          line: 7,
+        },
+      ],
+    },
+  ],
+});
+
+ruleTester.run("editorconfig/linebreak-style (typescript)", require("../../../lib/rules/linebreak-style"), {
+  valid: commonValidTests,
+  invalid: [{
+    filename: path.join(__dirname, "../../configs/default/target.ts"),
+    code: "'use strict';\r\nconst foo: number = 0;\n",
+    output: "'use strict';\nconst foo: number = 0;\n",
+    errors: [{
+      message: "Expected linebreaks to be 'LF' but found 'CRLF'.",
+      line: 1,
+    }],
+  }],
+});
+
+ruleTester.run("editorconfig/no-trailing-space (typescript)", require("../../../lib/rules/no-trailing-spaces"), {
+  valid: [
+    ...commonValidTests,
+    {
+      filename: path.join(__dirname, "../../configs/default/target.ts"),
+      code:`'use strict';
+
+// comment
+const foo: string = 'foo';`,
     },
     {
-      // Trailing whitespace
+      // Passing Options
+      filename: path.join(__dirname, "../../configs/default/target.ts"),
+      options: [{ skipBlankLines: true, ignoreComments: true }],
+      code: [
+        "'use strict';",
+        "  ",
+        "// comment   ",
+        "const foo: string = 'foo';",
+      ].join("\n"),
+    },
+  ],
+  invalid: [
+    {
       filename: path.join(__dirname, "../../configs/default/target.ts"),
       code: "'use strict';" + "        \nconst foo: number = 0;\n",
       output: `'use strict';
 const foo: number = 0;
 `,
       errors: [{
-        message: "EditorConfig: Trailing spaces not allowed.",
+        message: "Trailing spaces not allowed.",
         line: 1,
       }],
     },
     {
-      // CRLF
+      // Passing Options
       filename: path.join(__dirname, "../../configs/default/target.ts"),
-      code: "'use strict';\r\nconst foo: number = 0;\n",
-      output: "'use strict';\nconst foo: number = 0;\n",
+      options: [{ skipBlankLines: true, ignoreComments: true }],
+      code: [
+        "'use strict';",
+        "  ",
+        "// comment   ",
+        "const foo: string = 'foo';   ",
+      ].join("\n"),
+      output: [
+        "'use strict';",
+        "  ",
+        "// comment   ",
+        "const foo: string = 'foo';",
+      ].join("\n"),
       errors: [{
-        message: "EditorConfig: Expected linebreaks to be 'LF' but found 'CRLF'.",
-        line: 1,
+        message: "Trailing spaces not allowed.",
+        line: 4,
       }],
-    },
-    {
-      // Passing Options (indent)
-      filename: path.join(__dirname, "../../configs/default/target.ts"),
-      options: [{ indent: { VariableDeclarator: { var: 2, let: 2, const: 3 }}}],
-      code: `'use strict';
-const foo: string = 'foo',
-  bar: string = 'bar';
-let a: string = 'a',
-  b: string = 'b';
-var e: string = 'e',
-  s: string = 's';
-`,
-      output: `'use strict';
-const foo: string = 'foo',
-      bar: string = 'bar';
-let a: string = 'a',
-    b: string = 'b';
-var e: string = 'e',
-    s: string = 's';
-`,
-      errors: [
-        {
-          message: "EditorConfig: Expected indentation of 6 spaces but found 2.",
-          line: 3,
-        },
-        {
-          message: "EditorConfig: Expected indentation of 4 spaces but found 2.",
-          line: 5,
-        },
-        {
-          message: "EditorConfig: Expected indentation of 4 spaces but found 2.",
-          line: 7,
-        },
-      ],
-    },
-    {
-      // Passing Options (options for multiple rules)
-      filename: path.join(__dirname, "../../configs/default/target.ts"),
-      options: [{
-        indent: { VariableDeclarator: { var: 2, let: 2, const: 3 }},
-        "no-trailing-spaces": { skipBlankLines: true, ignoreComments: true },
-      }],
-      code: `'use strict';
-const foo: string = 'foo',
-  bar: string = 'bar';
-let a: string = 'a',
-  b: string = 'b';
-var e: string = 'e',
-  s: string = 's';
-`,
-      output: `'use strict';
-const foo: string = 'foo',
-      bar: string = 'bar';
-let a: string = 'a',
-    b: string = 'b';
-var e: string = 'e',
-    s: string = 's';
-`,
-      errors: [
-        {
-          message: "EditorConfig: Expected indentation of 6 spaces but found 2.",
-          line: 3,
-        },
-        {
-          message: "EditorConfig: Expected indentation of 4 spaces but found 2.",
-          line: 5,
-        },
-        {
-          message: "EditorConfig: Expected indentation of 4 spaces but found 2.",
-          line: 7,
-        },
-      ],
     },
   ],
 });
