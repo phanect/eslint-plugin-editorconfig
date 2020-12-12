@@ -1,6 +1,6 @@
 # eslint-plugin-editorconfig
 
-ESLint plugin to follow EditorConfig
+An ESLint plugin to enforce EditorConfig rules
 
 [![CircleCI](https://circleci.com/gh/phanect/eslint-plugin-editorconfig.svg?style=svg)](https://circleci.com/gh/phanect/eslint-plugin-editorconfig) [![NPM Version](https://img.shields.io/npm/v/eslint-plugin-editorconfig.svg)](https://npmjs.org/package/eslint-plugin-editorconfig)
 

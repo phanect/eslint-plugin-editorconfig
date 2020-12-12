@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-editorconfig",
   "version": "2.1.3",
-  "description": "Report and fix EditorConfig rule violation",
+  "description": "An ESLint plugin to enforce EditorConfig rules",
   "main": "main.js",
   "scripts": {
     "test": "mocha --reporter dot tests/**/*",
