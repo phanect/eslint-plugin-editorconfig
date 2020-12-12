@@ -3,11 +3,6 @@
   "version": "2.1.3",
   "description": "Report and fix EditorConfig rule violation",
   "main": "main.js",
-  "directories": {
-    "doc": "docs",
-    "lib": "lib",
-    "test": "tests"
-  },
   "scripts": {
     "test": "mocha --reporter dot tests/**/*",
     "lint": "eslint .",
