@@ -185,4 +185,4 @@ var baz = 5;
 
 ## License
 
-[MIT](http://vjpr.mit-license.org)
+[MIT](https://vjpr.mit-license.org)
