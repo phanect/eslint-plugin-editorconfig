@@ -1,13 +1,8 @@
 {
   "name": "eslint-plugin-editorconfig",
-  "version": "2.1.3",
-  "description": "Report and fix EditorConfig rule violation",
+  "version": "3.0.0",
+  "description": "An ESLint plugin to enforce EditorConfig rules",
   "main": "main.js",
-  "directories": {
-    "doc": "docs",
-    "lib": "lib",
-    "test": "tests"
-  },
   "scripts": {
     "test": "mocha --reporter dot tests/**/*",
     "lint": "eslint .",
@@ -29,13 +24,14 @@
   },
   "homepage": "https://github.com/phanect/eslint-plugin-editorconfig",
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.9.1",
     "editorconfig": "^0.15.0",
-    "eslint": "^7.0.0"
+    "eslint": "^7.0.0",
+    "klona": "^2.0.4"
   },
   "devDependencies": {
     "@phanect/eslint-plugin": "latest",
-    "@typescript-eslint/eslint-plugin": "^3.2.0",
-    "@typescript-eslint/parser": "^3.2.0",
+    "@typescript-eslint/parser": "^4.9.1",
     "mocha": "^8.0.1"
   }
 }
