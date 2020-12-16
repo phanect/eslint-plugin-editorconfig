@@ -4,7 +4,7 @@
   "description": "An ESLint plugin to enforce EditorConfig rules",
   "main": "main.js",
   "scripts": {
-    "test": "mocha --reporter dot tests/**/*",
+    "test": "./tests/package/test.sh && mocha --reporter dot tests/**/*.js",
     "lint": "eslint .",
     "release": "npm publish . --access public"
   },
