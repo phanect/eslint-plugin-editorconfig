@@ -2,7 +2,11 @@
 
 module.exports = {
   rules: {
-    editorconfig: require("./lib/rules/editorconfig"),
+    charset: require("./lib/rules/charset"),
+    "eol-last": require("./lib/rules/eol-last"),
+    indent: require("./lib/rules/indent"),
+    "linebreak-style": require("./lib/rules/linebreak-style"),
+    "no-trailing-spaces": require("./lib/rules/no-trailing-spaces"),
   },
   configs: {
     noconflict: {
