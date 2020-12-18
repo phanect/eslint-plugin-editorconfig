@@ -51,7 +51,7 @@ Or you can extend `plugin:editorconfig/all` instead of adding rules.
 
 ## Conflicting ESLint rules
 
-Following rules may conflicts `editorconfig` rule.
+Following rules may conflict `editorconfig/*` rule.
 It is recommended to disable them.
 
 - eol-last
