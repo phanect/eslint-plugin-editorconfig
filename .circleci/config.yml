@@ -25,7 +25,7 @@ jobs:
     steps:
       - init
       - run: npm test
-      # - run: npm run lint
+      - run: npm run lint
 
   release:
     executor:
