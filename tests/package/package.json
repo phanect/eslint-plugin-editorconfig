@@ -11,6 +11,6 @@
     "test": "npm run lint"
   },
   "dependencies": {
-    "eslint-plugin-editorconfig": "file:../../eslint-plugin-editorconfig-3.0.0.tgz"
+    "eslint-plugin-editorconfig": "file:../../eslint-plugin-editorconfig-3.0.1.tgz"
   }
 }
