@@ -1,5 +1,5 @@
 {
-  "name": "@phanect/test-package-js",
+  "name": "@phanect/test-package-ts",
   "version": "1.0.0",
   "description": "a test package",
   "author": "Jumpei Ogawa <phanective@gmail.com>",
@@ -7,10 +7,11 @@
   "private": true,
   "main": "main.js",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint . --ext=.js,.ts",
     "test": "npm run lint"
   },
-  "dependencies": {
-    "eslint-plugin-editorconfig": "file:../../eslint-plugin-editorconfig-3.0.1.tgz"
+  "devDependencies": {
+    "@typescript-eslint/parser": "^4.14.0",
+    "typescript": "^4.1.3"
   }
 }
