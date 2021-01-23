@@ -138,7 +138,7 @@ As documented, `@typescript-eslint/indent` is unstable currently. Please read ty
 Example (based on the code in the [document for the backend rule `indent`](https://eslint.org/docs/rules/indent)):
 
 ```javascript
-/*eslint indent: ["error", { "SwitchCase": 1 }]*/
+/*eslint editorconfig/indent: ["error", { "SwitchCase": 1 }]*/
 
 switch(a){
 case "a":
@@ -173,10 +173,10 @@ The backend ESLint rule is [`no-trailing-spaces`](https://eslint.org/docs/rules/
 > * `"ignoreComments": false` (default) disallows trailing whitespace in comment blocks
 > * `"ignoreComments": true` allows trailing whitespace in comment blocks
 
-Example (copied from [document for the backend rule `no-trailing-spaces`](https://eslint.org/docs/rules/no-trailing-spaces)):
+Example (based on the code in the [document for the backend rule `no-trailing-spaces`](https://eslint.org/docs/rules/no-trailing-spaces)):
 
 ```javascript
-/*eslint no-trailing-spaces: ["error", { "skipBlankLines": true }]*/
+/*eslint editorconfig/no-trailing-spaces: ["error", { "skipBlankLines": true }]*/
 
 var foo = 0;
 var baz = 5;
