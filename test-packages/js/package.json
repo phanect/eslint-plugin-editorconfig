@@ -9,8 +9,5 @@
   "scripts": {
     "lint": "eslint .",
     "test": "npm run lint"
-  },
-  "dependencies": {
-    "eslint-plugin-editorconfig": "file:../../eslint-plugin-editorconfig-3.0.1.tgz"
   }
 }
