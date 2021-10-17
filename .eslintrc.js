@@ -12,4 +12,5 @@ module.exports = {
     ecmaVersion: "latest",
   },
   //plugins: [ "@phanect" ],
+  ignorePatterns: [ "test-packages/**" ],
 };
