@@ -32,6 +32,6 @@
   "devDependencies": {
     "@phanect/eslint-plugin": "latest",
     "@typescript-eslint/parser": "^5.0.0",
-    "mocha": "^8.0.1"
+    "mocha": "^9.1.3"
   }
 }
