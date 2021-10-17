@@ -16,6 +16,11 @@ module.exports = {
         "linebreak-style": "off",
         "no-trailing-spaces": "off",
         "unicode-bom": "off",
+        "@typescript-eslint/eol-last": "off",
+        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/linebreak-style": "off",
+        "@typescript-eslint/no-trailing-spaces": "off",
+        "@typescript-eslint/unicode-bom": "off",
       },
     },
     all: {
@@ -25,6 +30,11 @@ module.exports = {
         "linebreak-style": "off",
         "no-trailing-spaces": "off",
         "unicode-bom": "off",
+        "@typescript-eslint/eol-last": "off",
+        "@typescript-eslint/indent": "off",
+        "@typescript-eslint/linebreak-style": "off",
+        "@typescript-eslint/no-trailing-spaces": "off",
+        "@typescript-eslint/unicode-bom": "off",
 
         "editorconfig/charset": "error",
         "editorconfig/eol-last": "error",
