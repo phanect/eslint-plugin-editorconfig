@@ -2,6 +2,7 @@
 
 module.exports = {
   root: true,
+  extends: "plugin:editorconfig/noconflict",
 
   env: {
     es6: true,
