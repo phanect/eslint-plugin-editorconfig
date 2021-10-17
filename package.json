@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-editorconfig",
-  "version": "3.0.2",
+  "version": "3.1.0",
   "description": "An ESLint plugin to enforce EditorConfig rules",
   "main": "main.js",
   "scripts": {
@@ -24,14 +24,13 @@
   },
   "homepage": "https://github.com/phanect/eslint-plugin-editorconfig",
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.9.1",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
     "editorconfig": "^0.15.0",
-    "eslint": "^7.0.0",
+    "eslint": "^8.0.1",
     "klona": "^2.0.4"
   },
   "devDependencies": {
-    "@phanect/eslint-plugin": "latest",
-    "@typescript-eslint/parser": "^4.9.1",
-    "mocha": "^8.0.1"
+    "@typescript-eslint/parser": "^5.0.0",
+    "mocha": "^9.1.3"
   }
 }
