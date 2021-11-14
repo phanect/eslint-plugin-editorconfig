@@ -59,7 +59,7 @@ ruleTester.run("editorconfig/indent (typescript)", require("../../../lib/rules/i
     {
       // Passing Options (indent)
       filename: path.join(__dirname, "../../configs/default/target.ts"),
-      options: [{ VariableDeclarator: { var: 2, let: 2, const: 3 }}],
+      options: [0, { VariableDeclarator: { var: 2, let: 2, const: 3 }}],
       code: `'use strict';
 const foo: string = 'foo',
       bar: string = 'bar',
@@ -99,7 +99,7 @@ const foo: number = 0;
     {
       // Passing Options
       filename: path.join(__dirname, "../../configs/default/target.ts"),
-      options: [{ VariableDeclarator: { var: 2, let: 2, const: 3 }}],
+      options: [0, { VariableDeclarator: { var: 2, let: 2, const: 3 }}],
       code: `'use strict';
 const foo: string = 'foo',
   bar: string = 'bar';

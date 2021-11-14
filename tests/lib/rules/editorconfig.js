@@ -54,7 +54,7 @@ ruleTester.run("editorconfig/indent (javascript)", require("../../../lib/rules/i
     {
       // Passing Options (indent)
       filename: path.join(__dirname, "../../configs/default/target.js"),
-      options: [{ VariableDeclarator: { var: 2, let: 2, const: 3 }}],
+      options: [0, { VariableDeclarator: { var: 2, let: 2, const: 3 }}],
       code: `'use strict';
 const foo = 'foo',
       bar = 'bar',
@@ -94,7 +94,7 @@ const foo = 0;
     {
       // Passing Options
       filename: path.join(__dirname, "../../configs/default/target.js"),
-      options: [{ VariableDeclarator: { var: 2, let: 2, const: 3 }}],
+      options: [0, { VariableDeclarator: { var: 2, let: 2, const: 3 }}],
       code: `'use strict';
 const foo = 'foo',
   bar = 'bar';
