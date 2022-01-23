@@ -96,7 +96,7 @@ ESLint only verifies if BOM is specified or not.
 
 ##### Options
 
-None
+- fallback (default: `undefined`) `"utf-8"` or `"utf-8-bom"`. If you set this value, ESLint still checks if the files use specified charset, even if the project have no .editorconfig. If you don't set `fallback`, ESLint does not lint charset when the project have no .editorconfig.
 
 ##### When Not To Use It
 
@@ -109,7 +109,7 @@ The backend ESLint rule is [`eol-last`](https://eslint.org/docs/rules/eol-last)
 
 ##### Options
 
-None
+- fallback (default: `undefined`) `"always"` or `"never"`. If you set this value, ESLint still checks if the files have the newlines at the end, even if the project have no .editorconfig. If you don't set `fallback`, ESLint does not lint the last newlines when the project have no .editorconfig.
 
 #### Enforce EditorConfig rules for indentation (`editorconfig/indent`)
 
@@ -119,6 +119,10 @@ The backend ESLint rule is [`indent`](https://eslint.org/docs/rules/indent) and 
 As documented, `@typescript-eslint/indent` is unstable currently. Please read typescript-eslint#1824 before using this rule for TypeScript.
 
 ##### Options
+
+- fallback (default: `undefined`) number of whitespaces or `"tab"`. If you set this value, ESLint still checks indents, even if the project have no .editorconfig. If you don't set `fallback`, ESLint does not lint indents when the project have no .editorconfig.
+
+Options inherited from [`indent`](https://eslint.org/docs/rules/indent) and [`@typescript-eslint/indent`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md) are also available:
 
 > * `"SwitchCase"` (default: 0) enforces indentation level for `case` clauses in `switch` statements
 > * `"VariableDeclarator"` (default: 1) enforces indentation level for `var` declarators; can also take an object to define separate rules for `var`, `let` and `const` declarations. It can also be `"first"`, indicating all the declarators should be aligned with the first declarator.
@@ -143,7 +147,7 @@ As documented, `@typescript-eslint/indent` is unstable currently. Please read ty
 Example (based on the code in the [document for the backend rule `indent`](https://eslint.org/docs/rules/indent)):
 
 ```javascript
-/*eslint editorconfig/indent: ["error", { "SwitchCase": 1 }]*/
+/*eslint editorconfig/indent: ["error", { SwitchCase: 1, fallback: 4 }]*/
 
 switch(a){
 case "a":
@@ -164,7 +168,7 @@ The backend ESLint rule is [`linebreak-style`](https://eslint.org/docs/rules/lin
 
 ##### Options
 
-None
+- fallback (default: `undefined`) `"unix"` (LF) or `"windows"` (CRLF). If you set this value, ESLint still checks linebreaks, even if the project have no .editorconfig. If you don't set `fallback`, ESLint does not lint linebreaks when the project have no .editorconfig.
 
 #### Enforce EditorConfig rules for trailing spaces (`editorconfig/no-trailing-spaces`)
 
@@ -172,6 +176,8 @@ The corresponding EditorCongig property is `trim_trailing_whitespace`.
 The backend ESLint rule is [`no-trailing-spaces`](https://eslint.org/docs/rules/no-trailing-spaces)
 
 ##### Options
+
+- fallback (default: `undefined`) `true` if you want to disallow trailing spaces when the project has no .editorconfig. If you don't set `fallback`, ESLint does not lint linebreaks when the project have no .editorconfig.
 
 > * `"skipBlankLines": false` (default) disallows trailing whitespace on empty lines
 > * `"skipBlankLines": true` allows trailing whitespace on empty lines
