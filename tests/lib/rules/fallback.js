@@ -39,6 +39,7 @@ const foo = 0;
 `,
       options: [{ fallback: "never" }],
     }],
+    invalid: [],
   });
 
   ruleTester.run(`EditorConfig should have priority to fallback - editorconfig/indent (${ lang })`, require("../../../lib/rules/indent"), {
@@ -70,6 +71,7 @@ if (true) {
 `,
       },
     ],
+    invalid: [],
   });
 
   ruleTester.run(`EditorConfig should have priority to fallback - editorconfig/linebreak-style (${ lang })`, require("../../../lib/rules/linebreak-style"), {
@@ -78,9 +80,11 @@ if (true) {
       code: "'use strict';\nconst foo = 0;\n",
       options: [{ fallback: "windows" }],
     }],
+    invalid: [],
   });
 
   ruleTester.run(`EditorConfig should have priority to fallback - editorconfig/no-trailing-space (${ lang })`, require("../../../lib/rules/no-trailing-spaces"), {
+    valid: [],
     invalid: [
       {
         filename,
