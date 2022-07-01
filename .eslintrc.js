@@ -12,4 +12,7 @@ module.exports = {
     ecmaVersion: "latest",
   },
   ignorePatterns: [ "test-packages/**" ],
+  rules: {
+    "node/no-unpublished-require": "off",
+  },
 };

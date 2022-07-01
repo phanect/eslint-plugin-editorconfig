@@ -33,5 +33,9 @@
     "@typescript-eslint/parser": "^5.0.0",
     "eslint-config-phanective": "latest",
     "mocha": "^9.1.3"
+  },
+  "engines": {
+    "node": ">=14",
+    "npm": ">=8"
   }
 }
