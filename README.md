@@ -16,6 +16,12 @@ or
 $ yarn add --dev eslint eslint-plugin-editorconfig
 ```
 
+If you use [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint), you need to install `@typescript-eslint/eslint-plugin` too.
+
+```bash
+$ npm install --save-dev @typescript-eslint/eslint-plugin
+```
+
 ## Usage
 
 Like other ESLint plugins,
