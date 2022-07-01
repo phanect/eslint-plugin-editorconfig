@@ -3,7 +3,7 @@
 The corresponding EditorCongig property is `indent_style` and `indent_size`.
 The backend ESLint rule is [`indent`](https://eslint.org/docs/rules/indent) and [`@typescript-eslint/indent`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md).
 
-As documented, `@typescript-eslint/indent` is unstable currently. Please read typescript-eslint#1824 before using this rule for TypeScript.
+As documented, `@typescript-eslint/indent` is unstable currently. Please read typescript-eslint/typescript-eslint#1824 before using this rule for TypeScript.
 
 ## Options
 
