@@ -7,13 +7,13 @@ An ESLint plugin to enforce EditorConfig rules
 ## Install
 
 ```bash
-$ yarn add --dev eslint eslint-plugin-editorconfig
+$ npm install --save-dev eslint eslint-plugin-editorconfig
 ```
 
 or
 
 ```bash
-$ npm install --save-dev eslint eslint-plugin-editorconfig
+$ yarn add --dev eslint eslint-plugin-editorconfig
 ```
 
 ## Usage
