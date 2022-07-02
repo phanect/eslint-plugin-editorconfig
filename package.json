@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-editorconfig",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "An ESLint plugin to enforce EditorConfig rules",
   "main": "main.js",
   "scripts": {
