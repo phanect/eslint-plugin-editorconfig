@@ -1,8 +1,8 @@
 "use strict";
 
 module.exports = {
-  //extends: "plugin:@phanect/plain",
   root: true,
+  extends: "phanective/node",
 
   env: {
     node: true,
@@ -11,6 +11,8 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
   },
-  //plugins: [ "@phanect" ],
   ignorePatterns: [ "test-packages/**" ],
+  rules: {
+    "node/no-unpublished-require": "off",
+  },
 };

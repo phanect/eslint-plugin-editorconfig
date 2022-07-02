@@ -1,0 +1,16 @@
+{
+  "name": "@phanect/test-package-ts",
+  "version": "1.0.0",
+  "description": "a test package",
+  "author": "Jumpei Ogawa <phanective@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "lint": "eslint . --ext=.js,.ts",
+    "test": "npm run lint"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^5.0.0"
+  }
+}

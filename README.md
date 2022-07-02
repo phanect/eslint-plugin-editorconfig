@@ -7,13 +7,19 @@ An ESLint plugin to enforce EditorConfig rules
 ## Install
 
 ```bash
-$ yarn add --dev eslint eslint-plugin-editorconfig
+$ npm install --save-dev eslint eslint-plugin-editorconfig
 ```
 
 or
 
 ```bash
-$ npm install --save-dev eslint eslint-plugin-editorconfig
+$ yarn add --dev eslint eslint-plugin-editorconfig
+```
+
+If you use [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint), you need to install `@typescript-eslint/eslint-plugin` too.
+
+```bash
+$ npm install --save-dev @typescript-eslint/eslint-plugin
 ```
 
 ## Usage
