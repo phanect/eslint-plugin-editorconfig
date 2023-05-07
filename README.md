@@ -101,6 +101,8 @@ All the citation in the docs is from the backend ESLint rule document otherwise 
 | [editorconfig/linebreak-style](docs/rules/linebreak-style.md)       | Enforce EditorConfig rules for linebreak style                  | ✅ |
 | [editorconfig/no-trailing-spaces](docs/rules/no-trailing-spaces.md) | Enforce EditorConfig rules for trailing spaces                  | ✅ |
 
-## License
+## License & Credit
 
 [MIT](https://vjpr.mit-license.org)
+
+This plugin includes code derived from [klona](https://github.com/lukeed/klona).
