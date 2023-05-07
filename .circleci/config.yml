@@ -24,6 +24,9 @@ jobs:
       name: default
     steps:
       - init
+      - run:
+          name: Install this version of eslint-plugin-editorconfig
+          command: npm pack && npm install "eslint-plugin-editorconfig-$(jq --raw-output .version package.json).tgz"
       - run: npm test
       - run: npm run lint
 
