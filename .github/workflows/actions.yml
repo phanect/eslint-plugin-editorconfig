@@ -35,10 +35,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - run: npm install # not `npm ci` since there is no package-lock.json in this project
+      - run: npm test
+
       - name: Install this version of eslint-plugin-editorconfig
         run: npm pack && npm install "eslint-plugin-editorconfig-$(jq --raw-output .version package.json).tgz"
-      - run: npm test
+        if: 16 <= matrix.node-version
       - run: npm run lint
+        if: 16 <= matrix.node-version
 
   release:
     needs: test
