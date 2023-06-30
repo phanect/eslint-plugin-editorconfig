@@ -19,6 +19,9 @@ module.exports = {
       SwitchCase: 1,
     }],
     "linebreak-style": [ "error", "unix" ],
+    "max-len": [ "error", {
+      tabWidth: 2,
+    }],
     "no-trailing-spaces": [ "error", {
       skipBlankLines: false,
     }],
@@ -26,6 +29,7 @@ module.exports = {
     "editorconfig/eol-last": "error",
     "editorconfig/indent": "error",
     "editorconfig/linebreak-style": "error",
+    "editorconfig/max-len": "error",
     "editorconfig/no-trailing-spaces": "error",
   },
 };

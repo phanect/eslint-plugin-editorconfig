@@ -39,6 +39,7 @@ in your .eslintrc*
     "editorconfig/eol-last": "error",
     "editorconfig/indent": "error",
     "editorconfig/linebreak-style": "error",
+    "editorconfig/max-len": "error",
     "editorconfig/no-trailing-spaces": "error"
   },
   "plugins": [ "editorconfig" ]
@@ -63,11 +64,13 @@ It is recommended to disable them.
 - `eol-last`
 - `indent`
 - `linebreak-style`
+- `max-len`
 - `no-trailing-spaces`
 - `unicode-bom`
 - `@typescript-eslint/eol-last`
 - `@typescript-eslint/indent`
 - `@typescript-eslint/linebreak-style`
+- `@typescript-eslint/max-len`
 - `@typescript-eslint/no-trailing-spaces`
 - `@typescript-eslint/unicode-bom`
 
@@ -99,6 +102,7 @@ All the citation in the docs is from the backend ESLint rule document otherwise 
 | [editorconfig/eol-last](docs/rules/eol-last.md)                     | Enforce EditorConfig rules for the newlines at the end of files | ✅ |
 | [editorconfig/indent](docs/rules/indent.md)                         | Enforce EditorConfig rules for indentation                      | ✅ |
 | [editorconfig/linebreak-style](docs/rules/linebreak-style.md)       | Enforce EditorConfig rules for linebreak style                  | ✅ |
+| [editorconfig/max-len](docs/rules/max-len.md)                       | Enforce EditorConfig rules for indentation                      | ✅ |
 | [editorconfig/no-trailing-spaces](docs/rules/no-trailing-spaces.md) | Enforce EditorConfig rules for trailing spaces                  | ✅ |
 
 ## License & Credit

@@ -14,6 +14,7 @@ module.exports = {
     "editorconfig/eol-last": "error",
     "editorconfig/indent": "error",
     "editorconfig/linebreak-style": "error",
+    "editorconfig/max-len": "error",
     "editorconfig/no-trailing-spaces": "error",
   },
 };
