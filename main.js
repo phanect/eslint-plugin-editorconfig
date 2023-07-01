@@ -1,5 +1,21 @@
 "use strict";
 
+
+const noConflictRules = {
+  "eol-last": "off",
+  indent: "off",
+  "linebreak-style": "off",
+  "max-len": "off",
+  "no-trailing-spaces": "off",
+  "unicode-bom": "off",
+  "@typescript-eslint/eol-last": "off",
+  "@typescript-eslint/indent": "off",
+  "@typescript-eslint/linebreak-style": "off",
+  "@typescript-eslint/no-trailing-spaces": "off",
+  "@typescript-eslint/unicode-bom": "off",
+};
+
+
 module.exports = {
   rules: {
     charset: require("./lib/rules/charset"),
@@ -11,33 +27,11 @@ module.exports = {
   },
   configs: {
     noconflict: {
-      rules: {
-        "eol-last": "off",
-        indent: "off",
-        "linebreak-style": "off",
-        "max-len": "off",
-        "no-trailing-spaces": "off",
-        "unicode-bom": "off",
-        "@typescript-eslint/eol-last": "off",
-        "@typescript-eslint/indent": "off",
-        "@typescript-eslint/linebreak-style": "off",
-        "@typescript-eslint/no-trailing-spaces": "off",
-        "@typescript-eslint/unicode-bom": "off",
-      },
+      rules: noConflictRules,
     },
     all: {
       rules: {
-        "eol-last": "off",
-        indent: "off",
-        "linebreak-style": "off",
-        "max-len": "off",
-        "no-trailing-spaces": "off",
-        "unicode-bom": "off",
-        "@typescript-eslint/eol-last": "off",
-        "@typescript-eslint/indent": "off",
-        "@typescript-eslint/linebreak-style": "off",
-        "@typescript-eslint/no-trailing-spaces": "off",
-        "@typescript-eslint/unicode-bom": "off",
+        ...noConflictRules,
 
         "editorconfig/charset": "error",
         "editorconfig/eol-last": "error",
