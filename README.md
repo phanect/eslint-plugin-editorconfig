@@ -101,7 +101,7 @@ All the citation in the docs is from the backend ESLint rule document otherwise 
 | [editorconfig/eol-last](docs/rules/eol-last.md)                     | Enforce EditorConfig rules for the newlines at the end of files | ✅ |
 | [editorconfig/indent](docs/rules/indent.md)                         | Enforce EditorConfig rules for indentation                      | ✅ |
 | [editorconfig/linebreak-style](docs/rules/linebreak-style.md)       | Enforce EditorConfig rules for linebreak style                  | ✅ |
-| [editorconfig/max-len](docs/rules/max-len.md)                       | Enforce EditorConfig rules for indentation                      | ✅ |
+| [editorconfig/max-len](docs/rules/max-len.md)                       | Enforce EditorConfig rules for indentation                      |  |
 | [editorconfig/no-trailing-spaces](docs/rules/no-trailing-spaces.md) | Enforce EditorConfig rules for trailing spaces                  | ✅ |
 
 ## License & Credit
