@@ -70,7 +70,6 @@ It is recommended to disable them.
 - `@typescript-eslint/eol-last`
 - `@typescript-eslint/indent`
 - `@typescript-eslint/linebreak-style`
-- `@typescript-eslint/max-len`
 - `@typescript-eslint/no-trailing-spaces`
 - `@typescript-eslint/unicode-bom`
 
