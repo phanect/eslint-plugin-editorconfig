@@ -7,19 +7,19 @@ An ESLint plugin to enforce EditorConfig rules
 ## Install
 
 ```bash
-$ npm install --save-dev eslint eslint-plugin-editorconfig
+npm install --save-dev eslint eslint-plugin-editorconfig
 ```
 
 or
 
 ```bash
-$ yarn add --dev eslint eslint-plugin-editorconfig
+yarn add --dev eslint eslint-plugin-editorconfig
 ```
 
 If you use [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint), you need to install `@typescript-eslint/eslint-plugin` too.
 
 ```bash
-$ npm install --save-dev @typescript-eslint/eslint-plugin
+npm install --save-dev @typescript-eslint/eslint-plugin
 ```
 
 ## Usage
@@ -101,7 +101,7 @@ All the citation in the docs is from the backend ESLint rule document otherwise 
 | [editorconfig/eol-last](docs/rules/eol-last.md)                     | Enforce EditorConfig rules for the newlines at the end of files | ✅ |
 | [editorconfig/indent](docs/rules/indent.md)                         | Enforce EditorConfig rules for indentation                      | ✅ |
 | [editorconfig/linebreak-style](docs/rules/linebreak-style.md)       | Enforce EditorConfig rules for linebreak style                  | ✅ |
-| [editorconfig/max-len](docs/rules/max-len.md)                       | Enforce EditorConfig rules for indentation                      |  |
+| [editorconfig/max-len](docs/rules/max-len.md)                       | Enforce EditorConfig rules for maximum line length              |    |
 | [editorconfig/no-trailing-spaces](docs/rules/no-trailing-spaces.md) | Enforce EditorConfig rules for trailing spaces                  | ✅ |
 
 ## License & Credit
