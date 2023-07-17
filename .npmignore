@@ -1,6 +1,8 @@
-.circleci/
+.github/
 .editorconfig
 .eslintrc.js
 node_modules/
+test-packages/
 tests/
 renovate.json
+*.tgz
