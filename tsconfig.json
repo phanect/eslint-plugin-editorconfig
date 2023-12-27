@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "esModuleInterop": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "esnext",
+    "alwaysStrict": true,
+    "lib": [ "esnext" ],
+    "newLine": "lf",
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "resolveJsonModule": true
+  },
+  "include": [ "**/*.ts" ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}
