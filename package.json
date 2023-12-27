@@ -2,7 +2,7 @@
   "name": "eslint-plugin-editorconfig",
   "version": "4.0.3",
   "description": "An ESLint plugin to enforce EditorConfig rules",
-  "main": "main.js",
+  "main": "dist/main.js",
   "scripts": {
     "test": "./test-packages/test.sh && mocha --reporter dot tests/lib/**/*.js",
     "lint": "eslint .",
