@@ -1,4 +1,5 @@
 /* eslint no-use-before-define: "off" */
+// @ts-nocheck
 /*
  * This file is a modified version of klona/full (https://github.com/lukeed/klona).
  * Licensed under MIT.
@@ -22,7 +23,7 @@ function set(obj, key, val, overwrite) {
   }
 }
 
-function klona(x, overwrite = {}) {
+function klona<T>(x: T, overwrite = {}): T {
   if (typeof x !== "object") {
     return x;
   }
@@ -77,4 +78,4 @@ function klona(x, overwrite = {}) {
   return tmp || x;
 }
 
-module.exports = { clone: klona };
+export const clone = klona;
