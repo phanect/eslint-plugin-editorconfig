@@ -1,8 +1,6 @@
-"use strict";
+import { buildRule } from "../base";
 
-const { buildRule } = require("../base");
-
-module.exports = buildRule({
+export const noTrailingSpaces = buildRule({
   baseRuleName: "no-trailing-spaces",
   description: "Enforce EditorConfig rules for trailing spaces",
   omitFirstOption: false,

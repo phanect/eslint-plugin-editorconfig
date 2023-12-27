@@ -1,12 +1,16 @@
-"use strict";
+import charset from "./rules/charset";
+import eolLast from "./rules/eol-last";
+import indent from "./rules/indent";
+import linebreakStyle from "./rules/linebreak-style";
+import noTrailingSpaces from "./rules/no-trailing-spaces";
 
-module.exports = {
+export default {
   rules: {
-    charset: require("./lib/rules/charset"),
-    "eol-last": require("./lib/rules/eol-last"),
-    indent: require("./lib/rules/indent"),
-    "linebreak-style": require("./lib/rules/linebreak-style"),
-    "no-trailing-spaces": require("./lib/rules/no-trailing-spaces"),
+    charset,
+    "eol-last": eolLast,
+    indent,
+    "linebreak-style": linebreakStyle,
+    "no-trailing-spaces": noTrailingSpaces,
   },
   configs: {
     noconflict: {
