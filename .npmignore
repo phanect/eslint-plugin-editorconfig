@@ -2,5 +2,6 @@
 .editorconfig
 .eslintrc.js
 node_modules/
+src/
 tests/
 renovate.json
