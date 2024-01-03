@@ -24,6 +24,13 @@ $ npm install --save-dev @typescript-eslint/eslint-plugin
 
 ## Usage
 
+### eslint.config.* (Flat Config)
+
+Unfortunately, eslint-plugin-editorconfig does not work properly with Flat Config for now, even if you use `@eslint/eslintrc` for compatibility.
+Please wait for the next version.
+
+### .eslintrc.*
+
 Like other ESLint plugins,
 
 - add rules in the `rules`

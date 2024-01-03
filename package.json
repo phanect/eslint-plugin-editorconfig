@@ -17,7 +17,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/phanect/eslint-plugin-editorconfig.git"
+    "url": "git+https://github.com/phanect/eslint-plugin-editorconfig.git"
   },
   "bugs": {
     "url": "https://github.com/phanect/eslint-plugin-editorconfig/issues"
