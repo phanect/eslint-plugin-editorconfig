@@ -1,0 +1,16 @@
+{
+  "name": "epe-flat-config-example",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6",
+    "eslint": "^8.56.0",
+    "eslint-plugin-editorconfig": "^4.0.3",
+    "undici": "^6.2.1"
+  }
+}
