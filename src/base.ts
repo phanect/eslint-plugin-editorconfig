@@ -1,7 +1,7 @@
+import { camelCase } from "change-case";
 import editorconfig from "editorconfig";
-import { Linter } from "eslint";
-import { klona } from "klona/lite";
 import { clone } from "./clone.ts";
+import { isNodeJsError } from "./utils.ts";
 import type { BuildRule } from "./types.ts";
 import type { Rule } from "eslint";
 
@@ -10,7 +10,7 @@ export const buildRule: BuildRule = ({ baseRuleName, description, omitFirstOptio
 
   // Remove first option
   if (omitFirstOption !== false) {
-    jsBaseRule.meta.schema.shift();
+    jsBaseRule.meta?.schema?.shift();
   }
 
   return {
