@@ -1,7 +1,7 @@
 # Enforce EditorConfig rules for linebreak style (`editorconfig/linebreak-style`)
 
 The corresponding EditorCongig property is `end_of_line`.
-The backend ESLint rule is [`linebreak-style`](https://eslint.org/docs/rules/linebreak-style)
+The backend ESLint rule is [`@stylistic/js/linebreak-style`](https://eslint.style/rules/js/linebreak-style)
 
 If you set `end_of_line = lf` in .editorconfig, the linebreak code **must** be LF.  
 If you set `end_of_line = crlf` in .editorconfig, the linebreak code **must** be CRLF.  
