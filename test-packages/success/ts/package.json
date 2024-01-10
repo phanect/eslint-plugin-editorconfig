@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "a test package",
   "author": "Jumpei Ogawa (https://phanective.org)",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "main": "main.js",
   "scripts": {
