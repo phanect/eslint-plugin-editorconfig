@@ -1,4 +1,9 @@
 #
+# Project-specific
+#
+dist/
+
+#
 # System
 #
 
