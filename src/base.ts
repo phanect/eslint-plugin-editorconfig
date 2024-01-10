@@ -38,7 +38,12 @@ export const buildRule: BuildRule = ({ baseRuleName, description, omitFirstOptio
       if (filename.endsWith(".ts")) {
         try {
           const { rules } = require("@typescript-eslint/eslint-plugin");
-          baseRule = rules[baseRuleName] ? klona(rules[baseRuleName]) : jsBaseRule;
+
+          if (!rules?.[baseRuleName]) {
+            throw new Error(`Unexpected rule name "${baseRuleName}" not found in @typescript-eslint/eslint-plugin. Sorry, this may be a bug.`);
+          }
+
+          baseRule = klona(rules[baseRuleName]);
         } catch (err) {
           if (err.code === "MODULE_NOT_FOUND") {
             throw new Error("eslint-plugin-editorconfig requires typescript and @typescript-eslint/eslint-plugin to lint *.ts files. Run `npm install typescript @typescript-eslint/eslint-plugin`.");
