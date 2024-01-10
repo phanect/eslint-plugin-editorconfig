@@ -1,6 +1,6 @@
 import { buildRule } from "../base.js";
 
-export default buildRule({
+export default await buildRule({
   baseRuleName: "eol-last",
   description: "Enforce EditorConfig rules for the newlines at the end of files",
   getESLintOption: (ecParams) => {

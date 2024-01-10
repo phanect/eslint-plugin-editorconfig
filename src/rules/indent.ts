@@ -1,6 +1,6 @@
 import { buildRule } from "../base.js";
 
-export default buildRule({
+export default await buildRule({
   baseRuleName: "indent",
   description: "Enforce EditorConfig rules for indentation",
   getESLintOption: (ecParams) => {

@@ -1,6 +1,6 @@
 import { buildRule } from "../base.js";
 
-export default buildRule({
+export default await buildRule({
   baseRuleName: "unicode-bom",
   description: "Enforce EditorConfig rules for charset",
   getESLintOption: (ecParams) => {
