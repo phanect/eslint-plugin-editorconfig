@@ -14,6 +14,7 @@
     }
   },
   "scripts": {
+    "build": "unbuild",
     "test": "./test-packages/test.sh && esno tests/*.test.ts",
     "lint": "tsc --noEmit && eslint .",
     "release": "npm publish . --access public"
@@ -47,7 +48,8 @@
     "@types/node": "^20.11.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint-config-phanective": "latest",
-    "esno": "^4.0.0"
+    "esno": "^4.0.0",
+    "unbuild": "^2.0.0"
   },
   "engines": {
     "node": ">=18.x",
