@@ -4,8 +4,8 @@
   "description": "An ESLint plugin to enforce EditorConfig rules",
   "main": "main.js",
   "scripts": {
-    "test": "./test-packages/test.sh && mocha --reporter dot tests/lib/**/*.js",
-    "lint": "eslint .",
+    "test": "./test-packages/test.sh && esno tests/*.test.ts",
+    "lint": "tsc --noEmit && eslint .",
     "release": "npm publish . --access public"
   },
   "keywords": [
@@ -29,10 +29,11 @@
     "klona": "^2.0.4"
   },
   "devDependencies": {
+    "@types/eslint": "^8.56.1",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint-config-phanective": "latest",
-    "mocha": "^10.2.0"
+    "esno": "^4.0.0"
   },
   "engines": {
     "node": ">=18.x",

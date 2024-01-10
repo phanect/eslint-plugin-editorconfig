@@ -1,12 +1,16 @@
-"use strict";
+/**
+ * @file Report and fix EditorConfig rule violation.
+ * @author Jumpei Ogawa
+ */
+import editorconfig from "editorconfig";
+import { Linter } from "eslint";
+import { klona } from "klona/lite";
+import { clone } from "./clone.ts";
+import type { BuildRule } from "./types.ts";
+import type { Rule } from "eslint";
 
-const editorconfig = require("editorconfig");
-const { Linter } = require("eslint");
-const { klona } = require("klona/lite");
-const { clone } = require("./clone.js");
-
-module.exports.buildRule = ({ baseRuleName, description, omitFirstOption, getESLintOption }) => {
-  const jsBaseRule = klona(new Linter().getRules().get(baseRuleName));
+export const buildRule: BuildRule = ({ baseRuleName, description, omitFirstOption, getESLintOption }) => {
+  const jsBaseRule: Rule.RuleModule = klona(new Linter().getRules().get(baseRuleName));
 
   // Remove first option
   if (omitFirstOption !== false) {
@@ -18,7 +22,7 @@ module.exports.buildRule = ({ baseRuleName, description, omitFirstOption, getESL
       ...jsBaseRule.meta,
 
       docs: {
-        ...jsBaseRule.meta.docs,
+        ...jsBaseRule.meta?.docs,
         description,
         url: `https://github.com/phanect/eslint-plugin-editorconfig/blob/main/docs/rules/${baseRuleName}.md`,
       },

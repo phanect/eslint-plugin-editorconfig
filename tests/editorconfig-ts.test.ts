@@ -1,16 +1,25 @@
-"use strict";
-
 // -----------------------------------------------------------------------------
 // Requirements
 // -----------------------------------------------------------------------------
 
-const path = require("path");
-const RuleTester = require("eslint").RuleTester;
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { RuleTester, type Rule } from "eslint";
+import epec from "../src/main.js";
 
 
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
+
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
+const {
+  charset,
+  "eol-last": eolLast,
+  indent,
+  "linebreak-style": linebreakStyle,
+  "no-trailing-spaces": noTrailingSpaces
+} = epec.rules as Record<string, Rule.RuleModule>;
 
 const ruleTester = new RuleTester({
   parser: require.resolve("@typescript-eslint/parser"),
@@ -21,22 +30,22 @@ const ruleTester = new RuleTester({
 
 const commonValidTests = [
   {
-    filename: path.join(__dirname, "../../configs/default/target.ts"),
+    filename: join(__dirname, "../../configs/default/target.ts"),
     code: `'use strict';
 const foo: number = 0;
 `,
   },
 ];
 
-ruleTester.run("editorconfig/charset (typescript)", require("../../../lib/rules/charset"), {
+ruleTester.run("editorconfig/charset (typescript)", charset, {
   valid: commonValidTests,
   invalid: [], // TODO
 });
 
-ruleTester.run("editorconfig/eol-last (typescript)", require("../../../lib/rules/eol-last"), {
+ruleTester.run("editorconfig/eol-last (typescript)", eolLast, {
   valid: commonValidTests,
   invalid: [{
-    filename: path.join(__dirname, "../../configs/default/target.ts"),
+    filename: join(__dirname, "../../configs/default/target.ts"),
     code: `'use strict';
 const foo: number = 0;`,
     output: `'use strict';
@@ -49,12 +58,12 @@ const foo: number = 0;
   }],
 });
 
-ruleTester.run("editorconfig/indent (typescript)", require("../../../lib/rules/indent"), {
+ruleTester.run("editorconfig/indent (typescript)", indent, {
   valid: [
     ...commonValidTests,
     {
       // Passing Options (indent)
-      filename: path.join(__dirname, "../../configs/default/target.ts"),
+      filename: join(__dirname, "../../configs/default/target.ts"),
       options: [{ VariableDeclarator: { var: 2, let: 2, const: 3 }}],
       code: `'use strict';
 const foo: string = 'foo',
@@ -79,7 +88,7 @@ var e: string = 'e',
   ],
   invalid: [
     {
-      filename: path.join(__dirname, "../../configs/default/target.ts"),
+      filename: join(__dirname, "../../configs/default/target.ts"),
       code: `'use strict';
     const foo: number = 0;
 `,
@@ -94,7 +103,7 @@ const foo: number = 0;
     },
     {
       // Passing Options
-      filename: path.join(__dirname, "../../configs/default/target.ts"),
+      filename: join(__dirname, "../../configs/default/target.ts"),
       options: [{ VariableDeclarator: { var: 2, let: 2, const: 3 }}],
       code: `'use strict';
 const foo: string = 'foo',
@@ -130,10 +139,10 @@ var e: string = 'e',
   ],
 });
 
-ruleTester.run("editorconfig/linebreak-style (typescript)", require("../../../lib/rules/linebreak-style"), {
+ruleTester.run("editorconfig/linebreak-style (typescript)", linebreakStyle, {
   valid: commonValidTests,
   invalid: [{
-    filename: path.join(__dirname, "../../configs/default/target.ts"),
+    filename: join(__dirname, "../../configs/default/target.ts"),
     code: "'use strict';\r\nconst foo: number = 0;\n",
     output: "'use strict';\nconst foo: number = 0;\n",
     errors: [{
@@ -143,11 +152,11 @@ ruleTester.run("editorconfig/linebreak-style (typescript)", require("../../../li
   }],
 });
 
-ruleTester.run("editorconfig/no-trailing-space (typescript)", require("../../../lib/rules/no-trailing-spaces"), {
+ruleTester.run("editorconfig/no-trailing-space (typescript)", noTrailingSpaces, {
   valid: [
     ...commonValidTests,
     {
-      filename: path.join(__dirname, "../../configs/default/target.ts"),
+      filename: join(__dirname, "../../configs/default/target.ts"),
       code:`'use strict';
 
 // comment
@@ -155,7 +164,7 @@ const foo: string = 'foo';`,
     },
     {
       // Passing Options
-      filename: path.join(__dirname, "../../configs/default/target.ts"),
+      filename: join(__dirname, "../../configs/default/target.ts"),
       options: [{ skipBlankLines: true, ignoreComments: true }],
       code: [
         "'use strict';",
@@ -167,7 +176,7 @@ const foo: string = 'foo';`,
   ],
   invalid: [
     {
-      filename: path.join(__dirname, "../../configs/default/target.ts"),
+      filename: join(__dirname, "../../configs/default/target.ts"),
       code: "'use strict';" + "        \nconst foo: number = 0;\n",
       output: `'use strict';
 const foo: number = 0;
@@ -179,7 +188,7 @@ const foo: number = 0;
     },
     {
       // Passing Options
-      filename: path.join(__dirname, "../../configs/default/target.ts"),
+      filename: join(__dirname, "../../configs/default/target.ts"),
       options: [{ skipBlankLines: true, ignoreComments: true }],
       code: [
         "'use strict';",
