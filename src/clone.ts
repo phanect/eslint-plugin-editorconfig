@@ -3,7 +3,6 @@
  * This file is a modified version of klona/full (https://github.com/lukeed/klona).
  * Licensed under MIT.
  */
-"use strict";
 
 function set(obj, key, val, overwrite) {
   const overwriteKeys = Object.keys(overwrite);
@@ -77,4 +76,4 @@ function klona(x, overwrite = {}) {
   return tmp || x;
 }
 
-module.exports = { clone: klona };
+export const clone = klona;

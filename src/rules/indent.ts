@@ -1,8 +1,6 @@
-"use strict";
+import { buildRule } from "../base.js";
 
-const { buildRule } = require("../base");
-
-module.exports = buildRule({
+export default buildRule({
   baseRuleName: "indent",
   description: "Enforce EditorConfig rules for indentation",
   getESLintOption: (ecParams) => {
