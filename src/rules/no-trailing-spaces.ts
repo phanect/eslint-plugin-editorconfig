@@ -1,6 +1,6 @@
 import { buildRule } from "../base.js";
 
-export default buildRule({
+export default await buildRule({
   baseRuleName: "no-trailing-spaces",
   description: "Enforce EditorConfig rules for trailing spaces",
   omitFirstOption: false,
