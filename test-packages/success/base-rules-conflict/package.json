@@ -5,9 +5,9 @@
   "author": "Jumpei Ogawa (https://phanective.org)",
   "license": "MIT",
   "private": true,
-  "main": "main.js",
+  "type": "module",
   "scripts": {
-    "lint": "eslint . --ext=.js,.ts",
+    "lint": "eslint .",
     "test": "npm run lint"
   }
 }

@@ -1,0 +1,15 @@
+1. klona を Object.create に置き換え
+https://github.com/eslint-stylistic/eslint-stylistic/blob/0ef56c76ab0ce64b5668bd8ba43e753f5244685a/packages/eslint-plugin-ts/rules/indent/indent.ts#L113-L121
+
+2. 元ルールを stylistics に移行
+3. FlatConfig 化
+
+
+
+追加したい ESLint ルール
+
+@stylistics/no-extra-semi `;;` とかの禁止
+
+https://eslint.style/rules/ts/member-delimiter-style type や interface の区切り文字を `;` で強制する
+
+TODO などを警告表示

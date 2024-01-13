@@ -1,11 +1,22 @@
 {
   "name": "eslint-plugin-editorconfig",
-  "version": "4.0.3",
+  "version": "5.0.0-beta1",
   "description": "An ESLint plugin to enforce EditorConfig rules",
-  "main": "main.js",
+  "type": "module",
+  "module": "./dist/main.mjs",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/main.mjs",
+        "types": "./dist/main.d.ts"
+      }
+    }
+  },
   "scripts": {
-    "test": "./test-packages/test.sh && mocha --reporter dot tests/lib/**/*.js",
-    "lint": "eslint .",
+    "build": "unbuild",
+    "test": "./test-packages/test.sh && esno tests/*.test.ts",
+    "lint": "tsc --noEmit && ESLINT_USE_FLAT_CONFIG=false eslint --ext='.js,.cjs,.mjs,.ts,.json' . && ESLINT_USE_FLAT_CONFIG=true eslint .",
     "release": "npm publish . --access public"
   },
   "keywords": [
@@ -24,18 +35,30 @@
   },
   "homepage": "https://github.com/phanect/eslint-plugin-editorconfig",
   "dependencies": {
-    "editorconfig": "^1.0.2",
-    "eslint": "^8.40.0",
+    "@stylistic/eslint-plugin": "^2.1.0",
+    "@stylistic/eslint-plugin-js": "^2.1.0",
+    "@stylistic/eslint-plugin-ts": "^2.1.0",
+    "change-case": "^5.4.0",
+    "deepmerge": "^4.3.1",
+    "editorconfig": "^2.0.0",
+    "eslint": "^9.0.0",
     "klona": "^2.0.4"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.0.0",
-    "eslint-config-phanective": "latest",
-    "mocha": "^10.2.0"
+    "@phanect/configs": "latest",
+    "@phanect/utils": "^1.2.0",
+    "@types/eslint": "^8.56.1",
+    "@types/json-schema": "^7.0.15",
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/parser": "^8.0.0-alpha.24",
+    "esno": "^4.0.0",
+    "unbuild": "^2.0.0"
+  },
+  "overrides": {
+    "@typescript-eslint/utils": "^8.0.0-alpha.24"
   },
   "engines": {
-    "node": ">=14",
-    "npm": ">=8"
+    "node": ">=18.x",
+    "npm": ">=10.x"
   }
 }
