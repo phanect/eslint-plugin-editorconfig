@@ -13,9 +13,12 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": true
+    "strict": true,
+    // Typecheck *.js files
+    "allowJs": true,
+    "checkJs": true
   },
-  "include": [ "**/*.ts" ],
+  "include": [ "**/*.ts", "**/*.js" ],
   "exclude": [
     "**/dist",
     "**/node_modules"
