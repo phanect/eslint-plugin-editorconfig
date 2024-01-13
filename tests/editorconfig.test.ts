@@ -19,7 +19,11 @@ const {
   linebreakStyle,
   "no-trailing-spaces": noTrailingSpaces
 } = epec.rules as Record<string, Rule.RuleModule>;
-const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2019 }});
+const ruleTester = new RuleTester({
+  languageOptions: {
+    ecmaVersion: 2019
+  }
+});
 
 const commonValidTests = [
   {
