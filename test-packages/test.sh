@@ -8,7 +8,7 @@ TMP="$(mktemp --directory)"
 
 # To run tests on local machine
 if [[ -z "${ESLINT_VERSION:-}" ]]; then
-  ESLINT_VERSION=8
+  ESLINT_VERSION=9
 fi
 
 cd "${PROJECT_ROOT}"

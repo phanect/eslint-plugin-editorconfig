@@ -8,9 +8,8 @@ import linebreakStyle from "../../../src/rules/linebreak-style.ts";
 import noTrailingSpaces from "../../../src/rules/no-trailing-spaces.ts";
 
 const ruleTester = new RuleTester({
-  parser: tsParser,
-  parserOptions: {
-    ecmaVersion: 2019,
+  languageOptions: {
+    parser: tsParser,
   },
 });
 

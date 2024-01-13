@@ -6,7 +6,7 @@ import indent from "../../../src/rules/indent.ts";
 import linebreakStyle from "../../../src/rules/linebreak-style.ts";
 import noTrailingSpaces from "../../../src/rules/no-trailing-spaces.ts";
 
-const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2019 }});
+const ruleTester = new RuleTester();
 
 const commonValidTests = [
   {
