@@ -100,6 +100,6 @@ All the citation in the docs is from the backend ESLint rule document otherwise 
 
 ## License & Credit
 
-[MIT](https://vjpr.mit-license.org)
+[MIT](./LICENSE)
 
 This plugin includes code derived from [klona](https://github.com/lukeed/klona).
