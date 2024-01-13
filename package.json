@@ -16,7 +16,7 @@
   "scripts": {
     "build": "unbuild",
     "test": "./test-packages/test.sh && esno tests/*.test.ts",
-    "lint": "tsc --noEmit && eslint .",
+    "lint": "tsc --noEmit && ESLINT_USE_FLAT_CONFIG=false eslint --ext='.js,.cjs,.mjs,.ts,.json' . && ESLINT_USE_FLAT_CONFIG=true eslint .",
     "release": "npm publish . --access public"
   },
   "keywords": [
