@@ -69,10 +69,9 @@ export const buildRule: BuildRule = async ({ baseRuleName, description, omitFirs
     },
 
     create: function(context) {
-      const filename = context.getFilename();
-      const ecParams = editorconfig.parseSync(context.getFilename(filename));
+      const ecParams = editorconfig.parseSync(context.filename);
       const { enabled, eslintOption } = getESLintOption(ecParams);
-      const baseRule = filename.endsWith(".ts") ? tsBaseRule : jsBaseRule;
+      const baseRule = context.filename.endsWith(".ts") ? tsBaseRule : jsBaseRule;
       const _context = eslintOption ? clone(context, { options: [ eslintOption, ...context.options ]}) : context;
 
       return enabled ? baseRule.create(_context) : {};
