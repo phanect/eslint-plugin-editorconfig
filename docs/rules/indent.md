@@ -1,13 +1,13 @@
 # Enforce EditorConfig rules for indentation (`editorconfig/indent`)
 
 The corresponding EditorCongig property is `indent_style` and `indent_size`.
-The backend ESLint rule is [`indent`](https://eslint.org/docs/rules/indent) and [`@typescript-eslint/indent`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md).
+The backend ESLint rule is [`@stylistic/js/indent`](https://eslint.style/rules/js/indent) and [`@stylistic/ts/indent`](https://eslint.style/rules/ts/indent).
 
 If you set `indent_style = space` in .editorconfig, the indent size **must** be the value of `indent_size`.  
 If you set `indent_style = tab` in .editorconfig, the indent **must** be the tabs.  
 If you don't set `indent_style` in .editorconfig or set `indent_style = unset`, this rule is disabled.
 
-As documented, `@typescript-eslint/indent` is unstable currently. Please read typescript-eslint/typescript-eslint#1824 before using this rule for TypeScript.
+As documented, TypeScript rule is unstable currently. Please read typescript-eslint/typescript-eslint#1824 before using this rule for TypeScript.
 
 ## Options
 

@@ -1,7 +1,19 @@
 import { join } from "node:path";
-import { RuleTester } from "eslint";
+import { RuleTester, type Rule } from "eslint";
+import epec from "../src/main.ts";
 
-const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2019 }});
+const {
+  charset,
+  "eol-last": eolLast,
+  indent, "linebreak-style":
+  linebreakStyle,
+  "no-trailing-spaces": noTrailingSpaces,
+} = epec.rules as Record<string, Rule.RuleModule>;
+const ruleTester = new RuleTester({
+  languageOptions: {
+    ecmaVersion: 2019,
+  },
+});
 
 const commonValidTests = [
   {
@@ -12,12 +24,12 @@ const foo = 0;
   },
 ];
 
-ruleTester.run("editorconfig/charset (javascript)", require("../../../lib/rules/charset"), {
+ruleTester.run("editorconfig/charset (javascript)", charset, {
   valid: commonValidTests,
   invalid: [], // TODO
 });
 
-ruleTester.run("editorconfig/eol-last (javascript)", require("../../../lib/rules/eol-last"), {
+ruleTester.run("editorconfig/eol-last (javascript)", eolLast, {
   valid: commonValidTests,
   invalid: [{
     filename: join(import.meta.dirname, "../../configs/default/target.js"),
@@ -33,7 +45,7 @@ const foo = 0;
   }],
 });
 
-ruleTester.run("editorconfig/indent (javascript)", require("../../../lib/rules/indent"), {
+ruleTester.run("editorconfig/indent (javascript)", indent, {
   valid: [
     ...commonValidTests,
     {
@@ -114,7 +126,7 @@ var e = 'e',
   ],
 });
 
-ruleTester.run("editorconfig/linebreak-style (javascript)", require("../../../lib/rules/linebreak-style"), {
+ruleTester.run("editorconfig/linebreak-style (javascript)", linebreakStyle, {
   valid: commonValidTests,
   invalid: [{
     filename: join(import.meta.dirname, "../../configs/default/target.js"),
@@ -127,7 +139,7 @@ ruleTester.run("editorconfig/linebreak-style (javascript)", require("../../../li
   }],
 });
 
-ruleTester.run("editorconfig/no-trailing-space (javascript)", require("../../../lib/rules/no-trailing-spaces"), {
+ruleTester.run("editorconfig/no-trailing-space (javascript)", noTrailingSpaces, {
   valid: [
     ...commonValidTests,
     {

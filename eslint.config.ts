@@ -1,4 +1,5 @@
 import { core, nodejs, unbundled } from "@phanect/lint";
+import epec from "./dist/main.mjs";
 import type { Linter } from "eslint";
 
 const configs: Linter.Config[] = [
@@ -11,6 +12,7 @@ const configs: Linter.Config[] = [
   ...core,
   ...nodejs,
   ...unbundled,
+  epec.configs.all,
 
   {
     // Do not add `files: [ "*" ],` here.
