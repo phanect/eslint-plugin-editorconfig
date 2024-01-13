@@ -5,7 +5,7 @@ import { isNodeJsError } from "./utils.ts";
 import type { BuildRule } from "./types.ts";
 import type { Rule } from "eslint";
 
-export const buildRule: BuildRule = async ({ baseRuleName, description, omitFirstOption, getESLintOption }) => {
+export const buildRule: BuildRule = async ({ baseRuleName, description, omitFirstOption, useTsRule, getESLintOption }) => {
   let jsBaseRule: Rule.RuleModule;
   let tsBaseRule: Rule.RuleModule;
 
@@ -31,11 +31,13 @@ export const buildRule: BuildRule = async ({ baseRuleName, description, omitFirs
   }
 
   try {
-    tsBaseRule = (await import(`@stylistic/eslint-plugin-ts/rules/${baseRuleName}`)).default;
+    if (useTsRule === true) {
+      tsBaseRule = (await import(`@stylistic/eslint-plugin-ts/rules/${baseRuleName}`)).default;
 
-    if (!tsBaseRule) {
-      const err: NodeJS.ErrnoException = new Error(undefined, { cause: "ERR_INVALID_RULE_NAME" });
-      throw err;
+      if (!tsBaseRule) {
+        const err: NodeJS.ErrnoException = new Error(undefined, { cause: "ERR_INVALID_RULE_NAME" });
+        throw err;
+      }
     }
   } catch (err) {
     if (
@@ -70,7 +72,7 @@ export const buildRule: BuildRule = async ({ baseRuleName, description, omitFirs
     create: function(context) {
       const ecParams = editorconfig.parseSync(context.filename);
       const { enabled, eslintOption } = getESLintOption(ecParams);
-      const baseRule = context.filename.endsWith(".ts") ? tsBaseRule : jsBaseRule;
+      const baseRule = context.filename.endsWith(".ts") && useTsRule ? tsBaseRule : jsBaseRule;
       const _context = eslintOption ? clone(context, { options: [ eslintOption, ...context.options ]}) : context;
 
       return enabled ? baseRule.create(_context) : {};
