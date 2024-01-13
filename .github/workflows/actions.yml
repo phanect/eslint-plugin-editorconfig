@@ -25,6 +25,10 @@ jobs:
           - 18
           - 20
           - 21
+        eslint-version:
+          - 8
+    env:
+      ESLINT_VERSION: ${{ matrix.eslint-version }}
 
     steps:
       - uses: actions/checkout@v3
