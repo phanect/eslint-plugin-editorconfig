@@ -2,7 +2,7 @@
 
 An ESLint plugin to enforce EditorConfig rules
 
-[![CircleCI](https://circleci.com/gh/phanect/eslint-plugin-editorconfig.svg?style=svg)](https://circleci.com/gh/phanect/eslint-plugin-editorconfig) [![NPM Version](https://img.shields.io/npm/v/eslint-plugin-editorconfig.svg)](https://npmjs.org/package/eslint-plugin-editorconfig)
+[![GitHub Actions Status](https://github.com/phanect/eslint-plugin-editorconfig/actions/workflows/actions.yml/badge.svg)](https://github.com/phanect/eslint-plugin-editorconfig/actions/workflows/actions.yml) [![NPM Version](https://img.shields.io/npm/v/eslint-plugin-editorconfig.svg)](https://npmjs.org/package/eslint-plugin-editorconfig)
 
 ## Install
 
