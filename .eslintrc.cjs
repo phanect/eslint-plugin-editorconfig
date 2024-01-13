@@ -1,9 +1,21 @@
 "use strict";
 
 const { join } = require("node:path");
-module.exports = {
+const deepmerge = require("deepmerge");
+const configs = require("eslint-config-phanective/node.json");
+
+delete configs.rules["editorconfig/charset"];
+delete configs.rules["editorconfig/eol-last"];
+delete configs.rules["editorconfig/indent"];
+delete configs.rules["editorconfig/linebreak-style"];
+delete configs.rules["editorconfig/no-trailing-spaces"];
+
+module.exports = deepmerge({
+  ...configs,
+  extends: configs.extends.filter(extended => !extended.startsWith("plugin:editorconfig")),
+  plugins: configs.plugins.filter(plugin => plugin !== "editorconfig")
+}, {
   root: true,
-  extends: "phanective/node",
 
   env: {
     node: true,
@@ -33,4 +45,4 @@ module.exports = {
       }
     }
   ]
-};
+});
