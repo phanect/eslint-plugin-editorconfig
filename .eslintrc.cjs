@@ -11,6 +11,7 @@ module.exports = {
   },
   parserOptions: {
     ecmaVersion: "latest",
+    sourceType: "module",
     project: join(__dirname, "tsconfig.json"),
   },
   ignorePatterns: [ "test-packages/**" ],
@@ -19,6 +20,12 @@ module.exports = {
   },
 
   overrides: [
+    {
+      files: [ "*.cjs" ],
+      parserOptions: {
+        sourceType: "script",
+      }
+    },
     {
       files: [ "tsconfig.json" ],
       rules: {
