@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-editorconfig",
-  "version": "4.0.3",
+  "version": "5.0.0-beta1",
   "description": "An ESLint plugin to enforce EditorConfig rules",
   "type": "module",
   "module": "./dist/main.mjs",
