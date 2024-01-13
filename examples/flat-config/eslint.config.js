@@ -1,21 +1,21 @@
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import epec from "eslint-plugin-editorconfig";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  resolvePluginsRelativeTo: __dirname,
-});
-
 /** @type { import("eslint").Linter.FlatConfig[] } */
 export default [
-  ...compat.config({
-    extends: [ "plugin:editorconfig/all" ],
-    plugins: [ "editorconfig" ],
-  }).map(config => ({
-    ...config,
-    ignores: [ join(__dirname, "src/invalid.ts") ]
-  })),
-];
+  js.configs.recommended,
+  epec.configs.all,
+  {
+    files: [ "*" ],
+    rules: {
+      "no-console": "off",
+    },
+  },
+].map(config => ({
+  ...config,
+  ignores: [ join(__dirname, "src/invalid.ts") ]
+}));
