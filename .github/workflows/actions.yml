@@ -43,9 +43,8 @@ jobs:
 
       - name: Install this version of eslint-plugin-editorconfig
         run: npm pack && npm install "eslint-plugin-editorconfig-$(jq --raw-output .version package.json).tgz"
-        if: 16 <= matrix.node-version
+
       - run: npm run lint
-        if: 16 <= matrix.node-version
 
   release:
     needs: test
