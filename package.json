@@ -2,7 +2,17 @@
   "name": "eslint-plugin-editorconfig",
   "version": "4.0.3",
   "description": "An ESLint plugin to enforce EditorConfig rules",
-  "main": "main.js",
+  "type": "module",
+  "module": "./dist/main.mjs",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/main.mjs",
+        "types": "./dist/main.d.ts"
+      }
+    }
+  },
   "scripts": {
     "test": "./test-packages/test.sh && esno tests/*.test.ts",
     "lint": "tsc --noEmit && eslint .",
