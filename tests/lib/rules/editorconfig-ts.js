@@ -1,20 +1,7 @@
-/**
- * @file Report and fix EditorConfig rule violation.
- * @author Jumpei Ogawa
- */
 "use strict";
-
-// -----------------------------------------------------------------------------
-// Requirements
-// -----------------------------------------------------------------------------
 
 const path = require("path");
 const RuleTester = require("eslint").RuleTester;
-
-
-// -----------------------------------------------------------------------------
-// Tests
-// -----------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({
   parser: require.resolve("@typescript-eslint/parser"),
