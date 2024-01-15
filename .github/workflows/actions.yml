@@ -23,13 +23,11 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 14
-          - 16
           - 18
           - 20
+          - 21 # TODO replace with 22 as soon as Node.js v22 is released
         eslint-version:
-          - 7
-          - 8
+          - 9
 
     env:
       ESLINT_VERSION: ${{ matrix.eslint-version }}
