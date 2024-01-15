@@ -72,11 +72,7 @@ It is recommended to disable them.
 - `linebreak-style`
 - `no-trailing-spaces`
 - `unicode-bom`
-- `@typescript-eslint/eol-last`
 - `@typescript-eslint/indent`
-- `@typescript-eslint/linebreak-style`
-- `@typescript-eslint/no-trailing-spaces`
-- `@typescript-eslint/unicode-bom`
 
 If above rules are specified in your .eslintrc, just remove them.
 If they are specified in the extended config, consider adding `plugin:editorconfig/noconflict` to your `extends`.
