@@ -7,7 +7,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "lint": "eslint . --ext=.js,.ts",
+    "lint": "eslint .",
     "test": "npm run lint"
   },
   "devDependencies": {
