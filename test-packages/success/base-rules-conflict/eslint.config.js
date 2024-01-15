@@ -1,3 +1,4 @@
+// @ts-ignore
 import epec from "eslint-plugin-editorconfig";
 
 /** @type { import("eslint").Linter.FlatConfig[] } */

@@ -1,4 +1,5 @@
 import parser from "@typescript-eslint/parser";
+// @ts-ignore
 import epec from "eslint-plugin-editorconfig";
 
 /** @type { import("eslint").Linter.FlatConfig[] } */
