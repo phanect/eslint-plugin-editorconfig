@@ -2,18 +2,17 @@
 
 An ESLint plugin to enforce EditorConfig rules
 
-[![CircleCI](https://circleci.com/gh/phanect/eslint-plugin-editorconfig.svg?style=svg)](https://circleci.com/gh/phanect/eslint-plugin-editorconfig) [![NPM Version](https://img.shields.io/npm/v/eslint-plugin-editorconfig.svg)](https://npmjs.org/package/eslint-plugin-editorconfig)
+[![GitHub Actions Status](https://github.com/phanect/eslint-plugin-editorconfig/actions/workflows/actions.yml/badge.svg)](https://github.com/phanect/eslint-plugin-editorconfig/actions/workflows/actions.yml) [![NPM Version](https://img.shields.io/npm/v/eslint-plugin-editorconfig.svg)](https://npmjs.org/package/eslint-plugin-editorconfig)
+
+## Requirements
+
+- Node.js 18.x, 20.x, and 21.x
+- ESLint 8.x and 9.x (9.x is beta support for now)
 
 ## Install
 
 ```bash
 $ npm install --save-dev eslint eslint-plugin-editorconfig
-```
-
-or
-
-```bash
-$ yarn add --dev eslint eslint-plugin-editorconfig
 ```
 
 If you use [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint), you need to install `@typescript-eslint/eslint-plugin` too.
@@ -72,11 +71,7 @@ It is recommended to disable them.
 - `linebreak-style`
 - `no-trailing-spaces`
 - `unicode-bom`
-- `@typescript-eslint/eol-last`
 - `@typescript-eslint/indent`
-- `@typescript-eslint/linebreak-style`
-- `@typescript-eslint/no-trailing-spaces`
-- `@typescript-eslint/unicode-bom`
 
 If above rules are specified in your .eslintrc, just remove them.
 If they are specified in the extended config, consider adding `plugin:editorconfig/noconflict` to your `extends`.
@@ -110,6 +105,6 @@ All the citation in the docs is from the backend ESLint rule document otherwise 
 
 ## License & Credit
 
-[MIT](https://vjpr.mit-license.org)
+[MIT](./LICENSE)
 
 This plugin includes code derived from [klona](https://github.com/lukeed/klona).
