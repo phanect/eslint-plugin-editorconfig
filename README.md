@@ -4,6 +4,12 @@ An ESLint plugin to enforce EditorConfig rules
 
 [![GitHub Actions Status](https://github.com/phanect/eslint-plugin-editorconfig/actions/workflows/actions.yml/badge.svg)](https://github.com/phanect/eslint-plugin-editorconfig/actions/workflows/actions.yml) [![NPM Version](https://img.shields.io/npm/v/eslint-plugin-editorconfig.svg)](https://npmjs.org/package/eslint-plugin-editorconfig)
 
+## Requirements
+
+- Node.js v18 and v20
+- ESLint v9
+  - If you need ESLint v8 support, please use eslint-plugin-editorconfig v4.
+
 ## Install
 
 ```bash
