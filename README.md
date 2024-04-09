@@ -26,8 +26,13 @@ $ npm install --save-dev @typescript-eslint/eslint-plugin
 
 ### eslint.config.* (Flat Config)
 
-Unfortunately, eslint-plugin-editorconfig does not work properly with Flat Config for now, even if you use `@eslint/eslintrc` for compatibility.
-Please wait for the next version.
+Unfortunately, eslint-plugin-editorconfig does not work properly with Flat Config for now, even if you use `@eslint/eslintrc` for compatibility.  
+Please wait for the next version.  
+If you use ESLint v9, set the `ESLINT_USE_FLAT_CONFIG` environment variable to `false` to use traditional .eslintrc.\*.
+
+```shell
+ESLINT_USE_FLAT_CONFIG=false npx eslint --ext=.js,.ts .
+```
 
 ### .eslintrc.*
 
