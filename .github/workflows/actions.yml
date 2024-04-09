@@ -23,10 +23,9 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 14
-          - 16
           - 18
           - 20
+          - 21
         eslint-version:
           - 7
           - 8
