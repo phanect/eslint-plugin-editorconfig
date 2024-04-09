@@ -2,6 +2,9 @@
 
 set -eux
 
+# Until this plugin supports flat config, test with legacy .eslintrc.*
+export ESLINT_USE_FLAT_CONFIG=false
+
 TEST_PKGS_DIR="$(realpath "$(dirname "${BASH_SOURCE[0]}")")"
 PROJECT_ROOT="$(realpath "${TEST_PKGS_DIR}/..")"
 TMP="$(mktemp --directory)"
