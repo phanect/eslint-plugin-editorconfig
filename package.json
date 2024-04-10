@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "test": "./test-packages/test.sh && mocha --reporter dot tests/lib/**/*.js",
-    "lint": "eslint .",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint .",
     "release": "npm publish . --access public"
   },
   "keywords": [
