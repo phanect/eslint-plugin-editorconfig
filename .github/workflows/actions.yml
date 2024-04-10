@@ -23,10 +23,16 @@ jobs:
     strategy:
       matrix:
         node-version:
-          - 14
-          - 16
           - 18
           - 20
+          - 21
+        eslint-version:
+          - 7
+          - 8
+          - 9
+
+    env:
+      ESLINT_VERSION: ${{ matrix.eslint-version }}
 
     steps:
       - uses: actions/checkout@v3

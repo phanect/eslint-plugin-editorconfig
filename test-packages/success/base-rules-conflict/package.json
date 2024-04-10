@@ -7,7 +7,7 @@
   "private": true,
   "main": "main.js",
   "scripts": {
-    "lint": "eslint . --ext=.js,.ts",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint . --ext=.js,.ts",
     "test": "npm run lint"
   }
 }
