@@ -4,16 +4,23 @@ An ESLint plugin to enforce EditorConfig rules
 
 [![CircleCI](https://circleci.com/gh/phanect/eslint-plugin-editorconfig.svg?style=svg)](https://circleci.com/gh/phanect/eslint-plugin-editorconfig) [![NPM Version](https://img.shields.io/npm/v/eslint-plugin-editorconfig.svg)](https://npmjs.org/package/eslint-plugin-editorconfig)
 
+## Requirements
+
+- ESLint v8
+  - ESLint v9 and flat config support is not ready yet. Even if you use legacy .eslintrc.\*, it does not work on v9. Sorry! :pray:
+- Node.js v{16, 18, 20}
+  - While not officially supported, also tested on v14 and v21. v14 support will be dropped on next major release. v21 support will be dropped when it reaches EOL and without major update of eslint-plugin-editorconfig.
+
 ## Install
 
 ```bash
-$ npm install --save-dev eslint eslint-plugin-editorconfig
+$ npm install --save-dev eslint@8 eslint-plugin-editorconfig
 ```
 
 or
 
 ```bash
-$ yarn add --dev eslint eslint-plugin-editorconfig
+$ yarn add --dev eslint@8 eslint-plugin-editorconfig
 ```
 
 If you use [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint), you need to install `@typescript-eslint/eslint-plugin` too.
