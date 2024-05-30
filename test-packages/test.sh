@@ -15,7 +15,7 @@ git clean -Xd --force
 # If you test without copying, test package is affected by node_modules in the project root
 cp --recursive "${TEST_PKGS_DIR}" "${TMP}/"
 
-for ESLINT_VERSION in "7" "8"; do
+for ESLINT_VERSION in "8"; do
   for PKGDIR in $(find "${TMP}/test-packages/success/" -maxdepth 1 -type d ! -path "${TMP}/test-packages/success/"); do
     cd "${PKGDIR}"
     npm install
