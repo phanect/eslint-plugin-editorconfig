@@ -1,10 +1,15 @@
-import charset from "./lib/rules/charset.js";
-import eolLast from "./lib/rules/eol-last.js";
-import indent from "./lib/rules/indent.js";
-import lineBreakStyle from "./lib/rules/linebreak-style.js";
-import noTrailingSpaces from "./lib/rules/no-trailing-spaces.js";
+import charset from "./rules/charset.ts";
+import eolLast from "./rules/eol-last.ts";
+import indent from "./rules/indent.ts";
+import lineBreakStyle from "./rules/linebreak-style.ts";
+import noTrailingSpaces from "./rules/no-trailing-spaces.ts";
+import type { ESLint, Linter } from "eslint";
 
-const plugin = {
+type EditorConfigPlugin = ESLint.Plugin &
+  Required<Pick<ESLint.Plugin, "rules" | "configs">> &
+  { configs: Record<string, Linter.FlatConfig> };
+
+const plugin: EditorConfigPlugin = {
   rules: {
     charset,
     "eol-last": eolLast,

@@ -4,8 +4,8 @@
 
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { RuleTester } from "eslint";
-import epec from "../../../main.js";
+import { RuleTester, type Rule } from "eslint";
+import epec from "../src/main.js";
 
 // -----------------------------------------------------------------------------
 // Tests
@@ -18,7 +18,7 @@ const {
   indent,
   "linebreak-style": linebreakStyle,
   "no-trailing-spaces": noTrailingSpaces
-} = epec.rules;
+} = epec.rules as Record<string, Rule.RuleModule>;
 
 const ruleTester = new RuleTester({
   parser: require.resolve("@typescript-eslint/parser"),

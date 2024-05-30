@@ -1,0 +1,16 @@
+{
+  "extends": "@phanect/configs/tsconfig/nodejs",
+  "compilerOptions": {
+    // Keep the compiled JavaScript code readable
+    "preserveConstEnums": true,
+    "removeComments": false,
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

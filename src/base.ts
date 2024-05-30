@@ -1,10 +1,12 @@
 import editorconfig from "editorconfig";
 import { Linter } from "eslint";
 import { klona } from "klona/lite";
-import { clone } from "./clone.js";
+import { clone } from "./clone.ts";
+import type { BuildRule } from "./types.ts";
+import type { Rule } from "eslint";
 
-export const buildRule = ({ baseRuleName, description, omitFirstOption, getESLintOption }) => {
-  const jsBaseRule = klona(new Linter().getRules().get(baseRuleName));
+export const buildRule: BuildRule = ({ baseRuleName, description, omitFirstOption, getESLintOption }) => {
+  const jsBaseRule: Rule.RuleModule = klona(new Linter().getRules().get(baseRuleName));
 
   // Remove first option
   if (omitFirstOption !== false) {
