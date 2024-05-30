@@ -16,12 +16,6 @@ An ESLint plugin to enforce EditorConfig rules
 $ npm install --save-dev eslint@8 eslint-plugin-editorconfig
 ```
 
-or
-
-```bash
-$ yarn add --dev eslint@8 eslint-plugin-editorconfig
-```
-
 If you use [typescript-eslint](https://github.com/typescript-eslint/typescript-eslint), you need to install `@typescript-eslint/eslint-plugin` too.
 
 ```bash
@@ -78,11 +72,7 @@ It is recommended to disable them.
 - `linebreak-style`
 - `no-trailing-spaces`
 - `unicode-bom`
-- `@typescript-eslint/eol-last`
 - `@typescript-eslint/indent`
-- `@typescript-eslint/linebreak-style`
-- `@typescript-eslint/no-trailing-spaces`
-- `@typescript-eslint/unicode-bom`
 
 If above rules are specified in your .eslintrc, just remove them.
 If they are specified in the extended config, consider adding `plugin:editorconfig/noconflict` to your `extends`.

@@ -16,6 +16,6 @@ export default [
     plugins: [ "editorconfig" ],
   }).map(config => ({
     ...config,
-    ignores: [ join(__dirname, "src/invalid.ts") ]
+    ignores: [ join(__dirname, "src/invalid.ts") ],
   })),
 ];

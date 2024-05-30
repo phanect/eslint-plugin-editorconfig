@@ -13,6 +13,17 @@ module.exports = {
   },
   ignorePatterns: [ "test-packages/**" ],
   rules: {
+    "node/no-unpublished-import": "off",
     "node/no-unpublished-require": "off",
+    "node/no-unsupported-features/es-syntax": "off",
   },
+  overrides: [
+    {
+      files: [ "examples/flat-config/**/*" ],
+      parserOptions: {
+        sourceType: "module",
+        project: "./examples/flat-config/tsconfig.json",
+      },
+    },
+  ],
 };
