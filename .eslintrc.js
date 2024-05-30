@@ -15,4 +15,13 @@ module.exports = {
   rules: {
     "node/no-unpublished-require": "off",
   },
+  overrides: [
+    {
+      files: [ "examples/flat-config/**/*" ],
+      parserOptions: {
+        sourceType: "module",
+        project: "./examples/flat-config/tsconfig.json",
+      },
+    },
+  ],
 };
