@@ -1,6 +1,8 @@
 name: GitHub Actions
 
 on:
+  schedule:
+    - cron: "8 11 * * 5" # At 11:08 on Friday
   pull_request:
     branches:
       - main
