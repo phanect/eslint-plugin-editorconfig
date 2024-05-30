@@ -1,7 +1,3 @@
-/**
- * @file Report and fix EditorConfig rule violation.
- * @author Jumpei Ogawa
- */
 "use strict";
 
 // -----------------------------------------------------------------------------
