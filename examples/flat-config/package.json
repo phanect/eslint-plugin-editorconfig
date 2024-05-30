@@ -11,6 +11,7 @@
     "undici": "^6.2.1"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
     "@phanect/configs": "latest",
     "@types/node": "^20.10.6",
     "eslint": "^8.56.0",
