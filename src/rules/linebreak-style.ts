@@ -1,8 +1,6 @@
-"use strict";
+import { buildRule } from "../base";
 
-const { buildRule } = require("../base");
-
-module.exports = buildRule({
+export const linebreakStyle = buildRule({
   baseRuleName: "linebreak-style",
   description: "Enforce EditorConfig rules for linebreak style",
   getESLintOption: (ecParams) => {

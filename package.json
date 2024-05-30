@@ -1,7 +1,8 @@
 {
   "name": "eslint-plugin-editorconfig",
-  "version": "4.0.3",
+  "version": "5.0.0",
   "description": "An ESLint plugin to enforce EditorConfig rules",
+  "type": "module",
   "main": "dist/main.js",
   "scripts": {
     "test": "./test-packages/test.sh && mocha --reporter dot tests/lib/**/*.js",
@@ -29,6 +30,7 @@
     "klona": "^2.0.4"
   },
   "devDependencies": {
+    "@types/eslint": "^8.56.0",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint-config-phanective": "latest",

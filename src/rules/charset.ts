@@ -1,8 +1,6 @@
-"use strict";
+import { buildRule } from "../base";
 
-const { buildRule } = require("../base");
-
-module.exports = buildRule({
+export const charset = buildRule({
   baseRuleName: "unicode-bom",
   description: "Enforce EditorConfig rules for charset",
   getESLintOption: (ecParams) => {

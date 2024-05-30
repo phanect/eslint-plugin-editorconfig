@@ -1,8 +1,6 @@
-"use strict";
+import { buildRule } from "../base";
 
-const { buildRule } = require("../base");
-
-module.exports = buildRule({
+export const eolLast = buildRule({
   baseRuleName: "eol-last",
   description: "Enforce EditorConfig rules for the newlines at the end of files",
   getESLintOption: (ecParams) => {
