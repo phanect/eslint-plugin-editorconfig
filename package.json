@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/phanect/eslint-plugin-editorconfig",
   "dependencies": {
-    "editorconfig": "^1.0.2",
+    "editorconfig": "^2.0.0",
     "eslint": "^8.40.0",
     "klona": "^2.0.4"
   },
