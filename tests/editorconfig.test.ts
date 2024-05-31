@@ -17,12 +17,12 @@ const {
   "eol-last": eolLast,
   indent, "linebreak-style":
   linebreakStyle,
-  "no-trailing-spaces": noTrailingSpaces
+  "no-trailing-spaces": noTrailingSpaces,
 } = epec.rules as Record<string, Rule.RuleModule>;
 const ruleTester = new RuleTester({
   languageOptions: {
-    ecmaVersion: 2019
-  }
+    ecmaVersion: 2019,
+  },
 });
 
 const commonValidTests = [

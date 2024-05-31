@@ -27,7 +27,7 @@ const baseRuleName = "unicode-bom";
 const baseRule: Rule.RuleModule | undefined = klona(new Linter().getRules().get(baseRuleName));
 
 if (!baseRule?.meta) {
-  throw new Error("Could not get `meta` information from ESLint. This is probably a bug of eslint-plugin-editorconfig. Sorry for inconvenience.")
+  throw new Error("Could not get `meta` information from ESLint. This is probably a bug of eslint-plugin-editorconfig. Sorry for inconvenience.");
 }
 
 // Remove first option

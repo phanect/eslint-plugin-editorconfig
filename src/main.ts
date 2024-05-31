@@ -65,9 +65,9 @@ plugin = deepmerge(plugin, {
     all: {
       plugins: {
         editorconfig: plugin,
-      }
-    }
-  }
+      },
+    },
+  },
 });
 
 export default plugin;
