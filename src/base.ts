@@ -5,7 +5,7 @@ import { isNodeJsError } from "./utils.ts";
 import type { BuildRule } from "./types.ts";
 import type { Rule } from "eslint";
 
-export const buildRule: BuildRule = async ({ baseRuleName, description, omitFirstOption, useTsRule, getESLintOption }) => {
+export const buildRule: BuildRule = async ({ baseRuleName, description, omitFirstOption, useTsRule, getESLintOption }): Promise<Rule.RuleModule> => {
   let jsBaseRule: Rule.RuleModule;
   let tsBaseRule: Rule.RuleModule;
 
