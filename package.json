@@ -35,11 +35,11 @@
   },
   "homepage": "https://github.com/phanect/eslint-plugin-editorconfig",
   "dependencies": {
-    "@stylistic/eslint-plugin-js": "^1.5.3",
-    "@stylistic/eslint-plugin-ts": "^1.5.3",
+    "@stylistic/eslint-plugin-js": "^2.1.0",
+    "@stylistic/eslint-plugin-ts": "^2.1.0",
     "change-case": "^5.4.0",
     "deepmerge": "^4.3.1",
-    "editorconfig": "^1.0.2",
+    "editorconfig": "^2.0.0",
     "eslint": "^9.0.0",
     "klona": "^2.0.4"
   },
@@ -47,7 +47,7 @@
     "@phanect/configs": "latest",
     "@types/eslint": "^8.56.1",
     "@types/node": "^20.11.0",
-    "@typescript-eslint/parser": "^5.0.0",
+    "@typescript-eslint/parser": "^8.0.0-alpha.24",
     "esno": "^4.0.0",
     "unbuild": "^2.0.0"
   },
