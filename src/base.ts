@@ -1,10 +1,17 @@
 import { camelCase } from "change-case";
-import editorconfig from "editorconfig";
+import editorconfig, { type Props } from "editorconfig";
 import { isNodeJsError } from "./utils.ts";
-import type { BuildRule } from "./types.ts";
 import type { Rule } from "eslint";
 
-export const buildRule: BuildRule = async ({ baseRuleName, description, omitFirstOption, useTsRule, getESLintOption }): Promise<Rule.RuleModule> => {
+type BuildRuleOptions = {
+  baseRuleName: "unicode-bom" | "eol-last" | "indent" | "linebreak-style" | "no-trailing-spaces";
+  description: string;
+  omitFirstOption?: boolean;
+  useTsRule: boolean;
+  getESLintOption: (ecParams: Props) => { enabled: boolean, eslintOption?: string | number };
+};
+
+export const buildRule = async ({ baseRuleName, description, omitFirstOption, useTsRule, getESLintOption }: BuildRuleOptions): Promise<Rule.RuleModule> => {
   let jsBaseRule: Rule.RuleModule;
   let tsBaseRule: Rule.RuleModule;
 
