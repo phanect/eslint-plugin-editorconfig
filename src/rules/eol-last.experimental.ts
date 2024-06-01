@@ -1,5 +1,4 @@
 import editorconfig, { type Props as EditorConfigProps } from "editorconfig";
-import { clone } from "../clone.ts";
 import { isNodeJsError } from "../utils.ts";
 import type { Rule } from "eslint";
 import { eolLast as jsBaseRule } from "@stylistic/eslint-plugin-js/rules/eol-last";
@@ -43,7 +42,7 @@ const ruleModule: Rule.RuleModule = {
 
     docs: {
       ...jsBaseRule.meta?.docs,
-      description: "Enforce EditorConfig rules for the newlines at the end of files";,
+      description: "Enforce EditorConfig rules for the newlines at the end of files",
       url: `https://github.com/phanect/eslint-plugin-editorconfig/blob/main/docs/rules/${baseRuleName}.md`,
     },
   },
