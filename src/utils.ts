@@ -5,3 +5,6 @@ export const isNodeJsError = (err: unknown): err is NodeJS.ErrnoException => {
     return false;
   }
 };
+
+export const arr = <T>(arrayOrSingle: T | T[]): T[] =>
+  Array.isArray(arrayOrSingle) ? arrayOrSingle : [ arrayOrSingle ];

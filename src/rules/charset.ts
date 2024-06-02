@@ -1,7 +1,6 @@
 import editorconfig from "editorconfig";
 import { Linter, type Rule } from "eslint";
 import { klona } from "klona/lite";
-import { clone } from "../clone.ts";
 
 type ESLintOption = {
   enabled: true,

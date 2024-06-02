@@ -1,4 +1,8 @@
+import { getLastElementOf } from "@phanect/utils";
+import { eolLast } from "@stylistic/eslint-plugin-js/rules/eol-last";
 import { buildRule } from "../base.ts";
+
+const lastSchema: JSONSchema4 | undefined = getLastElementOf(Array.isArray(eolLast.meta?.schema) ? eolLast.meta.schema : [ eolLast.meta?.schema ?? ...[]]);
 
 export default await buildRule({
   baseRuleName: "eol-last",
