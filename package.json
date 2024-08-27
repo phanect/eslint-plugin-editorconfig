@@ -38,7 +38,6 @@
     "change-case": "^5.4.0",
     "deepmerge": "^4.3.1",
     "editorconfig": "^1.0.2",
-    "eslint": "^9.0.0",
     "klona": "^2.0.4"
   },
   "devDependencies": {
@@ -47,12 +46,14 @@
     "@types/eslint": "^8.56.1",
     "@types/node": "^20.11.0",
     "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^9.0.0",
     "eslint-config-phanective": "latest",
     "esno": "^4.0.0",
     "unbuild": "^2.0.0"
   },
   "peerDependencies": {
-    "@stylistic/eslint-plugin": "^2.1.0"
+    "@stylistic/eslint-plugin": "^2.1.0",
+    "eslint": "^9.0.0"
   },
   "engines": {
     "node": ">=18.x",
