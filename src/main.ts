@@ -5,7 +5,9 @@ import indent from "./rules/indent.ts";
 import lineBreakStyle from "./rules/linebreak-style.ts";
 import noTrailingSpaces from "./rules/no-trailing-spaces.ts";
 import { name, version } from "../package.json";
+import stylistic, { type RuleOptions } from "@stylistic/eslint-plugin";
 import type { ESLint, Linter } from "eslint";
+import type { ESLintRules } from "eslint/rules";
 
 const conflictingRules: Linter.RulesRecord = {
   // Disable built-in rules from ESLint 8.x
@@ -26,48 +28,63 @@ const conflictingRules: Linter.RulesRecord = {
   "@stylistic/js/no-trailing-spaces": "off",
   "@stylistic/js/unicode-bom": "off",
 };
+stylistic.default.rules.indent.meta?.schema
 
-type EditorConfigPlugin = ESLint.Plugin &
-  Required<Pick<ESLint.Plugin, "rules" | "configs">> &
-  { configs: Record<string, Linter.FlatConfig> };
-
-let plugin: EditorConfigPlugin = {
-  meta: {
-    name,
-    version,
-  },
-  rules: {
-    charset,
-    "eol-last": eolLast,
-    indent,
-    "linebreak-style": lineBreakStyle,
-    "no-trailing-spaces": noTrailingSpaces,
-  },
-  configs: {
-    noconflict: {
-      rules: conflictingRules,
-    },
-    all: {
-      rules: {
-        ...conflictingRules,
-        "editorconfig/charset": "error",
-        "editorconfig/eol-last": "error",
-        "editorconfig/indent": "error",
-        "editorconfig/linebreak-style": "error",
-        "editorconfig/no-trailing-spaces": "error",
-      },
-    },
-  },
+type RuleSeverities = {
+  "unicode-bom"?: Linter.RuleSeverity | [
+    Linter.RuleSeverity,
+    { fallback?: "never" | "always" },
+  ],
+  "eol-last"?: Linter.RuleSeverity | [
+    Linter.RuleSeverity,
+    { fallback?: Omit<RuleOptions["@stylistic/eol-last"][0], "unix" | "windows"> },
+  ],
+  "indent"?: Linter.RuleSeverity | [
+    Linter.RuleSeverity,
+    RuleOptions["@stylistic/indent"][1] & { fallback?: RuleOptions["@stylistic/indent"][0] | "off" },
+  ],
+  "linebreak-style"?: Linter.RuleSeverity | [
+    Linter.RuleSeverity,
+    { fallback?: RuleOptions["@stylistic/linebreak-style"][0] },
+  ],
+  "no-trailing-spaces"?: Linter.RuleSeverity | [
+    Linter.RuleSeverity,
+    RuleOptions["@stylistic/no-trailing-spaces"][0] & { fallback?: "enabled" | "off" },
+  ],
 };
 
-plugin = deepmerge(plugin, {
-  configs: {
-    all: {
-      plugins: {
-        editorconfig: plugin,
-      }
+const plugin = (severities?: RuleSeverities): Linter.Config => {
+  const [ unicodeBomSeverity, { fallback: unicodeBomFallback }] = Array.isArray(severities?.["unicode-bom"]) ?
+    severities?.["unicode-bom"] :
+    [ severities?.["unicode-bom"] ?? "error", {}];
+  const [ eolLastSeverity, { fallback: eolLastFallback }] = Array.isArray(severities?.["eol-last"]) ?
+    severities?.["eol-last"] :
+    [ severities?.["eol-last"] ?? "error", {}];
+  const [ indentSeverity, { fallback: indentFallback, ...indentOptions } ] = Array.isArray(severities?.["indent"]) ?
+    severities["indent"] :
+    [ severities?.["indent"] ?? "error", {}];
+  const [ lineBreakStyleSeverity, { fallback: lineBreakStyleFallback } ] = Array.isArray(severities?.["linebreak-style"]) ?
+    severities["linebreak-style"] :
+    [ severities?.["linebreak-style"] ?? "error", {}];
+  const [ noTrailingSpacesSeverity, { fallback: noTrailingSpacesFallback, ...noTrailingSpacesOptions }] = Array.isArray(severities?.["no-trailing-spaces"]) ?
+    severities["no-trailing-spaces"] :
+    [ severities?.["no-trailing-spaces"] ?? "error", {}];
+
+  const config: Linter.Config = {
+    files: [ "*.js", "*.mjs", "*.cjs", "*.ts", "*.jsx", "*.tsx", "*.vue", "*.svelte", "*.astro" ],
+    plugins: {
+      stylisticForEditorConfig: stylistic,
+    },
+    rules: {
+      "unicode-bom": [ unicodeBomSeverity, "TODO_always_or_never" ?? unicodeBomFallback ],
+      "stylisticForEditorConfig/eol-last": [ eolLastSeverity, "TODO_always_or_never" ?? eolLastFallback ],
+      "stylisticForEditorConfig/indent": [ indentSeverity, "TODO_tab_or_number" ?? indentFallback, indentOptions ],
+      "stylisticForEditorConfig/linebreak-style": [ lineBreakStyleSeverity, "TODO_unix_OR_windows" ?? lineBreakStyleFallback ],
+      "stylisticForEditorConfig/no-trailing-spaces": [ noTrailingSpacesSeverity ? ("TODO_noTrailingSpacesSeverity_OR_off" ?? (noTrailingSpacesFallback === "enabled" ? "error" : noTrailingSpacesFallback)) : "off", noTrailingSpacesOptions],
     }
-  }
-});
+  };
+
+  return config;
+}
 
 export default plugin;
