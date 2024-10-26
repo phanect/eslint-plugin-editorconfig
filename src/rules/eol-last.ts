@@ -1,6 +1,8 @@
+import stylistic from "@stylistic/eslint-plugin";
 import { buildRule } from "../base.ts";
 
-export default buildRule({
+export default await buildRule({
+  baseRule: stylistic.rules["eol-last"],
   baseRuleName: "eol-last",
   description: "Enforce EditorConfig rules for the newlines at the end of files",
   getESLintOption: (ecParams) => {

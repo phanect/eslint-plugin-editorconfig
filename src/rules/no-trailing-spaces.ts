@@ -1,6 +1,8 @@
+import stylistic from "@stylistic/eslint-plugin";
 import { buildRule } from "../base.ts";
 
-export default buildRule({
+export default await buildRule({
+  baseRule: stylistic.rules["no-trailing-spaces"],
   baseRuleName: "no-trailing-spaces",
   description: "Enforce EditorConfig rules for trailing spaces",
   omitFirstOption: false,
