@@ -5,12 +5,13 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint"
   },
   "devDependencies": {
+    "@stylistic/eslint-plugin": "^5.1.0",
     "@types/node": "^24.0.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-editorconfig": "^4.0.3",
+    "eslint": "^9.31.0",
+    "eslint-plugin-editorconfig": "workspace:*",
     "undici": "^7.11.0"
   }
 }
