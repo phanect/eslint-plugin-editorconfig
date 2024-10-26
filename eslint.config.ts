@@ -6,6 +6,7 @@ const configs: Linter.Config[] = [
   {
     ignores: [
       "**/dist/**",
+      "./example/**", // This workspace has its own eslint.config.js
       "./test-packages/**",
       "./workspace/src/rules/charset.ts", // ignore until this rule is released again.
     ],

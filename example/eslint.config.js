@@ -1,21 +1,22 @@
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
-import { FlatCompat } from "@eslint/eslintrc";
+import stylistic from "@stylistic/eslint-plugin";
+import editorconfig from "eslint-plugin-editorconfig";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  resolvePluginsRelativeTo: __dirname,
-});
-
-/** @type { import("eslint").Linter.FlatConfig[] } */
+/** @type { import("eslint").Linter.Config[] } */
 export default [
-  ...compat.config({
-    extends: [ "plugin:editorconfig/all" ],
-    plugins: [ "editorconfig" ],
-  }).map(config => ({
-    ...config,
-    ignores: [ join(__dirname, "src/invalid.ts") ]
-  })),
+  {
+    files: [ "./**/*" ],
+    ignores: [ join(import.meta.dirname, "src/invalid.ts") ],
+
+    ...stylistic.configs.recommended,
+
+    rules: {
+      // These rules should be overwritten by editorconfig.configs.all
+      "@stylistic/eol-last": [ "error", "never" ],
+      "@stylistic/indent": [ "error", 4 ],
+      "@stylistic/linebreak-style": [ "error", "windows" ],
+      "@stylistic/no-trailing-spaces": [ "warn", { "ignoreComments": true }],
+    },
+  },
+
+  editorconfig.configs.all,
 ];
