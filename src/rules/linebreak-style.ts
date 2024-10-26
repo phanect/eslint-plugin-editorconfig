@@ -1,6 +1,8 @@
+import stylistic from "@stylistic/eslint-plugin";
 import { buildRule } from "../base.ts";
 
-export default buildRule({
+export default await buildRule({
+  baseRule: stylistic.rules["linebreak-style"],
   baseRuleName: "linebreak-style",
   description: "Enforce EditorConfig rules for linebreak style",
   getESLintOption: (ecParams) => {

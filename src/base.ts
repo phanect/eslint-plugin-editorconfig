@@ -1,51 +1,72 @@
-import editorconfig from "editorconfig";
-import { Linter } from "eslint";
-import { clone } from "../lib/clone.js";
+import deepmerge from "deepmerge";
+import editorconfig, { type Props } from "editorconfig";
+import { getLastElementOf } from "@phanect/utils";
+import type { Rule } from "eslint";
+import type { JSONSchema4 } from "json-schema";
 
-export const buildRule = ({ baseRuleName, description, omitFirstOption, getESLintOption }) => {
-  const jsBaseRule = structuredClone(new Linter().getRules().get(baseRuleName));
+type BuildRuleOptions = {
+  baseRule: Rule.RuleModule;
+  baseRuleName: string;
+  description: string;
+  omitFirstOption?: boolean;
+  getESLintOption: (ecParams: Props) => { enabled: boolean; eslintOption?: string | number; };
+};
 
-  // Remove first option
-  if (omitFirstOption !== false) {
-    jsBaseRule.meta.schema.shift();
+export const buildRule = async ({
+  baseRule,
+  baseRuleName,
+  description,
+  omitFirstOption = true,
+  getESLintOption,
+}: BuildRuleOptions): Promise<Rule.RuleModule> => {
+  if (!baseRule) {
+    throw new Error(`Could not import rule "${ baseRuleName }". Sorry, this is probably a bug in eslint-plugin-editorconfig.`, {
+      cause: "ERR_INVALID_RULE_NAME",
+    });
+  }
+
+  const meta = structuredClone(baseRule.meta);
+
+  if (!meta?.schema) {
+    throw new Error(`meta.schema is not defined in ${ baseRuleName }. Sorry, this is probably a bug of eslint-plugin-editorconfig.`);
+  }
+  if (!Array.isArray(meta.schema)) {
+    throw new Error(`meta.schema is not an array in ${ baseRuleName }. Sorry, this is probably a bug of eslint-plugin-editorconfig.`);
+  }
+
+  if (omitFirstOption === true) {
+    // Remove first option
+    meta.schema.shift();
+  }
+
+  const lastSchema: JSONSchema4 | undefined = !meta?.schema ? undefined
+    : Array.isArray(meta.schema) ? getLastElementOf(meta.schema)
+      : meta.schema;
+
+  if (lastSchema) {
+    meta.schema.push({
+      type: "object",
+      properties: {
+        fallback: lastSchema,
+      },
+    });
   }
 
   return {
-    meta: {
-      ...jsBaseRule.meta,
-
+    meta: deepmerge(baseRule.meta ?? {}, {
       docs: {
-        ...jsBaseRule.meta.docs,
         description,
         url: `https://github.com/phanect/eslint-plugin-editorconfig/blob/main/docs/rules/${ baseRuleName }.md`,
       },
-    },
+    }),
 
     create: function(context) {
-      const filename = context.getFilename();
-      const ecParams = editorconfig.parseSync(context.getFilename(filename));
+      const ecParams = editorconfig.parseSync(context.filename);
       const { enabled, eslintOption } = getESLintOption(ecParams);
 
-      let baseRule;
+      context.options[0] = eslintOption;
 
-      if (filename.endsWith(".ts")) {
-        try {
-          const { rules } = require("@typescript-eslint/eslint-plugin");
-          baseRule = rules[baseRuleName] ? structuredClone(rules[baseRuleName]) : jsBaseRule;
-        } catch (err) {
-          if (err.code === "MODULE_NOT_FOUND") {
-            throw new Error("eslint-plugin-editorconfig requires typescript and @typescript-eslint/eslint-plugin to lint *.ts files. Run `npm install typescript @typescript-eslint/eslint-plugin`.");
-          } else {
-            throw err;
-          }
-        }
-      } else {
-        baseRule = jsBaseRule;
-      }
-
-      const _context = eslintOption ? clone(context, { options: [ eslintOption, ...context.options ]}) : context;
-
-      return enabled ? baseRule.create(_context) : {};
+      return enabled ? baseRule.create(context) : {};
     },
   };
 };
