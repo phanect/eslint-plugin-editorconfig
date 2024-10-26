@@ -1,0 +1,22 @@
+{
+  "extends": [
+    "@phanect/configs/ts",
+    "@phanect/configs/ts/addons/npm"
+  ],
+  "compilerOptions": {
+    // Keep the compiled JavaScript code readable
+    "preserveConstEnums": true,
+    "removeComments": false,
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.mjs",
+    "**/*.jsx"
+  ],
+  "exclude": [
+    "**/node_modules/",
+    "**/dist/"
+  ]
+}
