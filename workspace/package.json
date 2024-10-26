@@ -33,7 +33,8 @@
     "build": "tsup",
     "lint": "tsc --noEmit",
     "test": "vitest run",
-    "release": "pnpm publish . --access public"
+    "release": "pnpm publish . --access public",
+    "prepare": "pnpm build"
   },
   "dependencies": {
     "@phanect/utils": "^1.2.0",
