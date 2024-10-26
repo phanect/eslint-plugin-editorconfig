@@ -18,11 +18,20 @@
     "editorconfig"
   ],
   "type": "module",
-  "module": "main.js",
-  "main": "main.js",
+  "module": "./dist/main.mjs",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/main.mjs",
+        "types": "./dist/main.d.ts"
+      }
+    }
+  },
   "scripts": {
+    "build": "tsup",
     "test": "./test-packages/test.sh && mocha --reporter dot tests/lib/**/*.js",
-    "lint": "eslint",
+    "lint": "tsc --noEmit && eslint",
     "fix": "eslint --fix",
     "release": "pnpm publish . --access public",
     "clean": "git clean -dX --force",
@@ -34,11 +43,15 @@
     "klona": "^2.0.4"
   },
   "devDependencies": {
+    "@phanect/configs": "latest",
     "@phanect/lint": "latest",
+    "@types/node": "^22.5.5",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "jiti": "latest",
-    "mocha": "^10.2.0"
+    "mocha": "^10.2.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.6.2"
   },
   "engines": {
     "node": "20.x || 22.x || >=24.x"
