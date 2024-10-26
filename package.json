@@ -8,17 +8,19 @@
   "scripts": {
     "build": "pnpm -r run build",
     "test": "./test-packages/test.sh && pnpm -r run test",
-    "lint": "tsc --noEmit && eslint . && pnpm -r run lint",
-    "fix": "eslint --fix .",
+    "lint": "pnpm build && tsc --noEmit && eslint && pnpm -r run lint",
+    "fix": "eslint --fix",
     "release": "pnpm -r run release",
     "clean": "git clean -dX --force",
     "refresh": "pnpm clean && rm --force ./pnpm-lock.yaml && corepack up && pnpm install"
   },
   "devDependencies": {
     "@phanect/configs": "latest",
+    "@phanect/lint": "latest",
     "@types/node": "^24.0.0",
     "eslint": "^9.0.0",
-    "eslint-config-phanective": "latest",
+    "eslint-plugin-editorconfig": "workspace:*",
+    "jiti": "latest",
     "typescript": "^5.6.2"
   },
   "engines": {
