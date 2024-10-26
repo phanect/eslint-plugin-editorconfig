@@ -20,8 +20,8 @@
   "main": "main.js",
   "scripts": {
     "test": "./test-packages/test.sh && mocha --reporter dot tests/lib/**/*.js",
-    "lint": "eslint .",
-    "fix": "eslint --fix .",
+    "lint": "eslint",
+    "fix": "eslint --fix",
     "release": "pnpm publish . --access public",
     "clean": "git clean -dX --force",
     "refresh": "pnpm clean && rm --force ./pnpm-lock.yaml && corepack up && pnpm install"
@@ -32,9 +32,10 @@
     "klona": "^2.0.4"
   },
   "devDependencies": {
+    "@phanect/lint": "latest",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
-    "eslint-config-phanective": "latest",
+    "jiti": "latest",
     "mocha": "^10.2.0"
   },
   "engines": {
