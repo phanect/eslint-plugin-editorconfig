@@ -17,6 +17,8 @@
     "eslintplugin",
     "editorconfig"
   ],
+  "type": "module",
+  "module": "main.js",
   "main": "main.js",
   "scripts": {
     "test": "./test-packages/test.sh && mocha --reporter dot tests/lib/**/*.js",
