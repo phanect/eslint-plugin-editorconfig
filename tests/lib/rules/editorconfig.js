@@ -1,22 +1,11 @@
-"use strict";
-
-// -----------------------------------------------------------------------------
-// Requirements
-// -----------------------------------------------------------------------------
-
-const path = require("path");
-const RuleTester = require("eslint").RuleTester;
-
-
-// -----------------------------------------------------------------------------
-// Tests
-// -----------------------------------------------------------------------------
+import { join } from "node:path";
+import { RuleTester } from "eslint";
 
 const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2019 }});
 
 const commonValidTests = [
   {
-    filename: path.join(__dirname, "../../configs/default/target.js"),
+    filename: join(import.meta.dirname, "../../configs/default/target.js"),
     code: `'use strict';
 const foo = 0;
 `,
@@ -31,7 +20,7 @@ ruleTester.run("editorconfig/charset (javascript)", require("../../../lib/rules/
 ruleTester.run("editorconfig/eol-last (javascript)", require("../../../lib/rules/eol-last"), {
   valid: commonValidTests,
   invalid: [{
-    filename: path.join(__dirname, "../../configs/default/target.js"),
+    filename: join(import.meta.dirname, "../../configs/default/target.js"),
     code: `'use strict';
 const foo = 0;`,
     output: `'use strict';
@@ -49,7 +38,7 @@ ruleTester.run("editorconfig/indent (javascript)", require("../../../lib/rules/i
     ...commonValidTests,
     {
       // Passing Options (indent)
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       options: [{ VariableDeclarator: { var: 2, let: 2, const: 3 }}],
       code: `'use strict';
 const foo = 'foo',
@@ -74,7 +63,7 @@ var e = 'e',
   ],
   invalid: [
     {
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       code: `'use strict';
     const foo = 0;
 `,
@@ -89,7 +78,7 @@ const foo = 0;
     },
     {
       // Passing Options
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       options: [{ VariableDeclarator: { var: 2, let: 2, const: 3 }}],
       code: `'use strict';
 const foo = 'foo',
@@ -128,7 +117,7 @@ var e = 'e',
 ruleTester.run("editorconfig/linebreak-style (javascript)", require("../../../lib/rules/linebreak-style"), {
   valid: commonValidTests,
   invalid: [{
-    filename: path.join(__dirname, "../../configs/default/target.js"),
+    filename: join(import.meta.dirname, "../../configs/default/target.js"),
     code: "'use strict';\r\nconst foo = 0;\n",
     output: "'use strict';\nconst foo = 0;\n",
     errors: [{
@@ -142,7 +131,7 @@ ruleTester.run("editorconfig/no-trailing-space (javascript)", require("../../../
   valid: [
     ...commonValidTests,
     {
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       code: `'use strict';
 
 // comment
@@ -150,7 +139,7 @@ const foo = 'foo';`,
     },
     {
       // Passing Options
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       options: [{ skipBlankLines: true, ignoreComments: true }],
       code: [
         "'use strict';",
@@ -162,7 +151,7 @@ const foo = 'foo';`,
   ],
   invalid: [
     {
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       code: "'use strict';" + "        \nconst foo = 0;\n",
       output: `'use strict';
 const foo = 0;
@@ -174,7 +163,7 @@ const foo = 0;
     },
     {
       // Passing Options
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       options: [{ skipBlankLines: true, ignoreComments: true }],
       code: [
         "'use strict';",
