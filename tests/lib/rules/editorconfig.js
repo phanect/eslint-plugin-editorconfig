@@ -1,37 +1,31 @@
-"use strict";
-
-// -----------------------------------------------------------------------------
-// Requirements
-// -----------------------------------------------------------------------------
-
-const path = require("path");
-const RuleTester = require("eslint").RuleTester;
-
-
-// -----------------------------------------------------------------------------
-// Tests
-// -----------------------------------------------------------------------------
+import { join } from "node:path";
+import { RuleTester } from "eslint";
+import charset from "../../../src/rules/charset.ts";
+import eolLast from "../../../src/rules/eol-last.ts";
+import indent from "../../../src/rules/indent.ts";
+import linebreakStyle from "../../../src/rules/linebreak-style.ts";
+import noTrailingSpaces from "../../../src/rules/no-trailing-spaces.ts";
 
 const ruleTester = new RuleTester({ parserOptions: { ecmaVersion: 2019 }});
 
 const commonValidTests = [
   {
-    filename: path.join(__dirname, "../../configs/default/target.js"),
+    filename: join(import.meta.dirname, "../../configs/default/target.js"),
     code: `'use strict';
 const foo = 0;
 `,
   },
 ];
 
-ruleTester.run("editorconfig/charset (javascript)", require("../../../src/rules/charset"), {
+ruleTester.run("editorconfig/charset (javascript)", charset, {
   valid: commonValidTests,
   invalid: [], // TODO
 });
 
-ruleTester.run("editorconfig/eol-last (javascript)", require("../../../src/rules/eol-last"), {
+ruleTester.run("editorconfig/eol-last (javascript)", eolLast, {
   valid: commonValidTests,
   invalid: [{
-    filename: path.join(__dirname, "../../configs/default/target.js"),
+    filename: join(import.meta.dirname, "../../configs/default/target.js"),
     code: `'use strict';
 const foo = 0;`,
     output: `'use strict';
@@ -44,12 +38,12 @@ const foo = 0;
   }],
 });
 
-ruleTester.run("editorconfig/indent (javascript)", require("../../../src/rules/indent"), {
+ruleTester.run("editorconfig/indent (javascript)", indent, {
   valid: [
     ...commonValidTests,
     {
       // Passing Options (indent)
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       options: [{ VariableDeclarator: { var: 2, let: 2, const: 3 }}],
       code: `'use strict';
 const foo = 'foo',
@@ -74,7 +68,7 @@ var e = 'e',
   ],
   invalid: [
     {
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       code: `'use strict';
     const foo = 0;
 `,
@@ -89,7 +83,7 @@ const foo = 0;
     },
     {
       // Passing Options
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       options: [{ VariableDeclarator: { var: 2, let: 2, const: 3 }}],
       code: `'use strict';
 const foo = 'foo',
@@ -125,10 +119,10 @@ var e = 'e',
   ],
 });
 
-ruleTester.run("editorconfig/linebreak-style (javascript)", require("../../../src/rules/linebreak-style"), {
+ruleTester.run("editorconfig/linebreak-style (javascript)", linebreakStyle, {
   valid: commonValidTests,
   invalid: [{
-    filename: path.join(__dirname, "../../configs/default/target.js"),
+    filename: join(import.meta.dirname, "../../configs/default/target.js"),
     code: "'use strict';\r\nconst foo = 0;\n",
     output: "'use strict';\nconst foo = 0;\n",
     errors: [{
@@ -138,11 +132,11 @@ ruleTester.run("editorconfig/linebreak-style (javascript)", require("../../../sr
   }],
 });
 
-ruleTester.run("editorconfig/no-trailing-space (javascript)", require("../../../src/rules/no-trailing-spaces"), {
+ruleTester.run("editorconfig/no-trailing-space (javascript)", noTrailingSpaces, {
   valid: [
     ...commonValidTests,
     {
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       code: `'use strict';
 
 // comment
@@ -150,7 +144,7 @@ const foo = 'foo';`,
     },
     {
       // Passing Options
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       options: [{ skipBlankLines: true, ignoreComments: true }],
       code: [
         "'use strict';",
@@ -162,7 +156,7 @@ const foo = 'foo';`,
   ],
   invalid: [
     {
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       code: "'use strict';" + "        \nconst foo = 0;\n",
       output: `'use strict';
 const foo = 0;
@@ -174,7 +168,7 @@ const foo = 0;
     },
     {
       // Passing Options
-      filename: path.join(__dirname, "../../configs/default/target.js"),
+      filename: join(import.meta.dirname, "../../configs/default/target.js"),
       options: [{ skipBlankLines: true, ignoreComments: true }],
       code: [
         "'use strict';",
