@@ -2,19 +2,9 @@
   "name": "eslint-plugin-editorconfig",
   "version": "4.0.3",
   "description": "An ESLint plugin to enforce EditorConfig rules",
-  "main": "main.js",
-  "scripts": {
-    "test": "./test-packages/test.sh && mocha --reporter dot tests/lib/**/*.js",
-    "lint": "eslint .",
-    "release": "npm publish . --access public"
-  },
-  "keywords": [
-    "eslint",
-    "eslintplugin",
-    "editorconfig"
-  ],
   "author": "Jumpei Ogawa",
   "license": "MIT",
+  "homepage": "https://github.com/phanect/eslint-plugin-editorconfig",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/phanect/eslint-plugin-editorconfig.git"
@@ -22,7 +12,17 @@
   "bugs": {
     "url": "https://github.com/phanect/eslint-plugin-editorconfig/issues"
   },
-  "homepage": "https://github.com/phanect/eslint-plugin-editorconfig",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "editorconfig"
+  ],
+  "main": "main.js",
+  "scripts": {
+    "test": "./test-packages/test.sh && mocha --reporter dot tests/lib/**/*.js",
+    "lint": "eslint .",
+    "release": "npm publish . --access public"
+  },
   "dependencies": {
     "editorconfig": "^1.0.2",
     "eslint": "^8.40.0",
