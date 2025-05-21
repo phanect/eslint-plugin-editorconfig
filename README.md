@@ -119,3 +119,7 @@ All the citation in the docs is from the backend ESLint rule document otherwise 
 [MIT](./LICENSE)
 
 This plugin includes code derived from [klona](https://github.com/lukeed/klona).
+
+## License
+
+This repository is licensed under the [Apache License 2.0](./LICENSE.txt).
