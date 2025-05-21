@@ -56,6 +56,7 @@ pnpm-debug.log*
 
 # Lockfiles are not required for npm packages
 pnpm-lock.yaml
+package-lock.json
 yarn.lock
 bun.lockb
 npm-shrinkwrap.json
