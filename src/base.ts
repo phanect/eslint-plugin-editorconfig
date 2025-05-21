@@ -3,7 +3,7 @@ import { Linter } from "eslint";
 import { clone } from "../lib/clone.js";
 
 export const buildRule = ({ baseRuleName, description, omitFirstOption, getESLintOption }) => {
-  const jsBaseRule = structuredClone(new Linter().getRules().get(baseRuleName));
+  const jsBaseRule = structuredClone(new Linter().getRules().get(baseRuleName)); // TODO getRules is not available for flat config
 
   // Remove first option
   if (omitFirstOption !== false) {

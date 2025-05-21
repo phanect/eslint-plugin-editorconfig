@@ -1,0 +1,25 @@
+{
+  // ▼▼ TODO Add this section if the project is an npm package ▼▼
+  "main": "./dist/main.cjs",
+  "module": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/main.d.ts",
+        "default": "./dist/main.js"
+      },
+      "require": "./dist/main.cjs"
+    }
+  },
+  // ▲▲ TODO Add this section if the project is an npm package ▲▲
+
+  "scripts": {
+    "build": "vite build",
+    "lint": "tsc --noEmit && eslint",
+  },
+  "devDependencies": {
+    "tsup": "^8.3.0", // TODO for Node.js projects which requires bundling
+    "vitest": "^3.0.2"
+  }
+}
