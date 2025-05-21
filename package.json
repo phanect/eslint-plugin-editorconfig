@@ -21,7 +21,10 @@
   "scripts": {
     "test": "./test-packages/test.sh && mocha --reporter dot tests/lib/**/*.js",
     "lint": "eslint .",
-    "release": "npm publish . --access public"
+    "fix": "eslint --fix .",
+    "release": "npm publish . --access public",
+    "clean": "git clean -dX --force",
+    "refresh": "npm run clean && rm --force ./package-lock.json && corepack up && npm install"
   },
   "dependencies": {
     "editorconfig": "^1.0.2",
