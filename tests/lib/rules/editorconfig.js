@@ -23,12 +23,12 @@ const foo = 0;
   },
 ];
 
-ruleTester.run("editorconfig/charset (javascript)", require("../../../lib/rules/charset"), {
+ruleTester.run("editorconfig/charset (javascript)", require("../../../src/rules/charset"), {
   valid: commonValidTests,
   invalid: [], // TODO
 });
 
-ruleTester.run("editorconfig/eol-last (javascript)", require("../../../lib/rules/eol-last"), {
+ruleTester.run("editorconfig/eol-last (javascript)", require("../../../src/rules/eol-last"), {
   valid: commonValidTests,
   invalid: [{
     filename: path.join(__dirname, "../../configs/default/target.js"),
@@ -44,7 +44,7 @@ const foo = 0;
   }],
 });
 
-ruleTester.run("editorconfig/indent (javascript)", require("../../../lib/rules/indent"), {
+ruleTester.run("editorconfig/indent (javascript)", require("../../../src/rules/indent"), {
   valid: [
     ...commonValidTests,
     {
@@ -125,7 +125,7 @@ var e = 'e',
   ],
 });
 
-ruleTester.run("editorconfig/linebreak-style (javascript)", require("../../../lib/rules/linebreak-style"), {
+ruleTester.run("editorconfig/linebreak-style (javascript)", require("../../../src/rules/linebreak-style"), {
   valid: commonValidTests,
   invalid: [{
     filename: path.join(__dirname, "../../configs/default/target.js"),
@@ -138,7 +138,7 @@ ruleTester.run("editorconfig/linebreak-style (javascript)", require("../../../li
   }],
 });
 
-ruleTester.run("editorconfig/no-trailing-space (javascript)", require("../../../lib/rules/no-trailing-spaces"), {
+ruleTester.run("editorconfig/no-trailing-space (javascript)", require("../../../src/rules/no-trailing-spaces"), {
   valid: [
     ...commonValidTests,
     {
