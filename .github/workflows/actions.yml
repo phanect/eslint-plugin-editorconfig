@@ -34,12 +34,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - run: npm install # not `npm ci` since there is no package-lock.json in this project
-      - run: npm test
+      - run: pnpm install # without `--frozen-lockfile` since there is no pnpm-lock.yaml in this project
+      - run: pnpm test
 
       - name: Install this version of eslint-plugin-editorconfig
-        run: npm pack && npm install "eslint-plugin-editorconfig-$(jq --raw-output .version package.json).tgz"
-      - run: npm run lint
+        run: pnpm pack && pnpm install "eslint-plugin-editorconfig-$(jq --raw-output .version package.json).tgz"
+      - run: pnpm lint
 
   release:
     needs: test
@@ -52,8 +52,8 @@ jobs:
         with:
           node-version: 24
 
-      - run: npm install # not `npm ci` since there is no package-lock.json in this project
+      - run: pnpm install # without `--frozen-lockfile` since there is no pnpm-lock.yaml in this project
 
       - name: set npm auth token
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-      - run: npm run release
+      - run: pnpm release
