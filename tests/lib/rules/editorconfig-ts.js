@@ -148,7 +148,7 @@ ruleTester.run("editorconfig/no-trailing-space (typescript)", require("../../../
     ...commonValidTests,
     {
       filename: path.join(__dirname, "../../configs/default/target.ts"),
-      code:`'use strict';
+      code: `'use strict';
 
 // comment
 const foo: string = 'foo';`,
