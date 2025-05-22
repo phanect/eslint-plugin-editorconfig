@@ -1,4 +1,4 @@
-import { buildRule } from "../base.js";
+import { buildRule } from "../base.ts";
 
 export default buildRule({
   baseRuleName: "no-trailing-spaces",

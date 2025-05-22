@@ -1,7 +1,7 @@
 import editorconfig from "editorconfig";
 import { Linter } from "eslint";
 import { klona } from "klona/lite";
-import { clone } from "./clone.js";
+import { clone } from "../lib/clone.js";
 
 export const buildRule = ({ baseRuleName, description, omitFirstOption, getESLintOption }) => {
   const jsBaseRule = klona(new Linter().getRules().get(baseRuleName));

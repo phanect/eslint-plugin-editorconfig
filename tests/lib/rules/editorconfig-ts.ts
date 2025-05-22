@@ -17,12 +17,12 @@ const foo: number = 0;
   },
 ];
 
-ruleTester.run("editorconfig/charset (typescript)", require("../../../lib/rules/charset"), {
+ruleTester.run("editorconfig/charset (typescript)", require("../../../src/rules/charset"), {
   valid: commonValidTests,
   invalid: [], // TODO
 });
 
-ruleTester.run("editorconfig/eol-last (typescript)", require("../../../lib/rules/eol-last"), {
+ruleTester.run("editorconfig/eol-last (typescript)", require("../../../src/rules/eol-last"), {
   valid: commonValidTests,
   invalid: [{
     filename: join(import.meta.dirname, "../../configs/default/target.ts"),
@@ -38,7 +38,7 @@ const foo: number = 0;
   }],
 });
 
-ruleTester.run("editorconfig/indent (typescript)", require("../../../lib/rules/indent"), {
+ruleTester.run("editorconfig/indent (typescript)", require("../../../src/rules/indent"), {
   valid: [
     ...commonValidTests,
     {
@@ -119,7 +119,7 @@ var e: string = 'e',
   ],
 });
 
-ruleTester.run("editorconfig/linebreak-style (typescript)", require("../../../lib/rules/linebreak-style"), {
+ruleTester.run("editorconfig/linebreak-style (typescript)", require("../../../src/rules/linebreak-style"), {
   valid: commonValidTests,
   invalid: [{
     filename: join(import.meta.dirname, "../../configs/default/target.ts"),
@@ -132,7 +132,7 @@ ruleTester.run("editorconfig/linebreak-style (typescript)", require("../../../li
   }],
 });
 
-ruleTester.run("editorconfig/no-trailing-space (typescript)", require("../../../lib/rules/no-trailing-spaces"), {
+ruleTester.run("editorconfig/no-trailing-space (typescript)", require("../../../src/rules/no-trailing-spaces"), {
   valid: [
     ...commonValidTests,
     {

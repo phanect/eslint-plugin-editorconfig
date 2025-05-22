@@ -1,5 +1,5 @@
 import { join } from "node:path";
-import editorconfig from "../../main.js";
+import editorconfig from "../../src/main.ts";
 
 /** @type { import("eslint").Linter.Config[] } */
 export default [{
