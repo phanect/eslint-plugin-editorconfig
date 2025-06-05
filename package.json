@@ -39,8 +39,7 @@
   },
   "dependencies": {
     "editorconfig": "^1.0.2",
-    "eslint": "^9.0.0",
-    "klona": "^2.0.4"
+    "eslint": "^9.0.0"
   },
   "devDependencies": {
     "@phanect/configs": "latest",

@@ -1,10 +1,9 @@
 import editorconfig from "editorconfig";
 import { Linter } from "eslint";
-import { klona } from "klona/lite";
 import { clone } from "../lib/clone.js";
 
 export const buildRule = ({ baseRuleName, description, omitFirstOption, getESLintOption }) => {
-  const jsBaseRule = klona(new Linter().getRules().get(baseRuleName));
+  const jsBaseRule = structuredClone(new Linter().getRules().get(baseRuleName));
 
   // Remove first option
   if (omitFirstOption !== false) {
@@ -32,7 +31,7 @@ export const buildRule = ({ baseRuleName, description, omitFirstOption, getESLin
       if (filename.endsWith(".ts")) {
         try {
           const { rules } = require("@typescript-eslint/eslint-plugin");
-          baseRule = rules[baseRuleName] ? klona(rules[baseRuleName]) : jsBaseRule;
+          baseRule = rules[baseRuleName] ? structuredClone(rules[baseRuleName]) : jsBaseRule;
         } catch (err) {
           if (err.code === "MODULE_NOT_FOUND") {
             throw new Error("eslint-plugin-editorconfig requires typescript and @typescript-eslint/eslint-plugin to lint *.ts files. Run `npm install typescript @typescript-eslint/eslint-plugin`.");
