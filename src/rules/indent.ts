@@ -1,8 +1,9 @@
 import { buildRule } from "../base.ts";
 
-export default buildRule({
+export default await buildRule({
   baseRuleName: "indent",
   description: "Enforce EditorConfig rules for indentation",
+  useTsRule: true,
   getESLintOption: (ecParams) => {
     if (ecParams.indent_style === "space") {
       return { enabled: true, eslintOption: ecParams.indent_size };

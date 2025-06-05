@@ -30,7 +30,7 @@
   },
   "scripts": {
     "build": "tsup",
-    "test": "./test-packages/test.sh && mocha --reporter dot tests/lib/**/*.js",
+    "test": "./test-packages/test.sh && jiti tests/*.test.ts",
     "lint": "tsc --noEmit && eslint",
     "fix": "eslint --fix",
     "release": "pnpm publish . --access public",
@@ -38,12 +38,19 @@
     "refresh": "pnpm clean && rm --force ./pnpm-lock.yaml && corepack up && pnpm install"
   },
   "dependencies": {
-    "editorconfig": "^1.0.2",
+    "@stylistic/eslint-plugin": "^2.1.0",
+    "@stylistic/eslint-plugin-js": "^2.1.0",
+    "@stylistic/eslint-plugin-ts": "^2.1.0",
+    "change-case": "^5.4.0",
+    "deepmerge": "^4.3.1",
+    "editorconfig": "^2.0.0",
     "eslint": "^9.0.0"
   },
   "devDependencies": {
     "@phanect/configs": "latest",
     "@phanect/lint": "latest",
+    "@phanect/utils": "^1.2.0",
+    "@types/json-schema": "^7.0.15",
     "@types/node": "^22.5.5",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",

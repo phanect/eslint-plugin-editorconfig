@@ -1,8 +1,9 @@
 import { buildRule } from "../base.ts";
 
-export default buildRule({
+export default await buildRule({
   baseRuleName: "no-trailing-spaces",
   description: "Enforce EditorConfig rules for trailing spaces",
   omitFirstOption: false,
-  getESLintOption: (ecParams) => ({ enabled: ecParams.trim_trailing_whitespace }),
+  useTsRule: false,
+  getESLintOption: (ecParams) => ({ enabled: !!ecParams.trim_trailing_whitespace }),
 });

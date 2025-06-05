@@ -1,9 +1,19 @@
 import { join } from "node:path";
-import { RuleTester } from "eslint";
+import { RuleTester, type Rule } from "eslint";
+import parser from "@typescript-eslint/parser";
+import epec from "../src/main.js";
+
+const {
+  charset,
+  "eol-last": eolLast,
+  indent,
+  "linebreak-style": linebreakStyle,
+  "no-trailing-spaces": noTrailingSpaces,
+} = epec.rules as Record<string, Rule.RuleModule>;
 
 const ruleTester = new RuleTester({
-  parser: require.resolve("@typescript-eslint/parser"),
-  parserOptions: {
+  languageOptions: {
+    parser,
     ecmaVersion: 2019,
   },
 });
@@ -17,12 +27,12 @@ const foo: number = 0;
   },
 ];
 
-ruleTester.run("editorconfig/charset (typescript)", require("../../../src/rules/charset"), {
+ruleTester.run("editorconfig/charset (typescript)", charset, {
   valid: commonValidTests,
   invalid: [], // TODO
 });
 
-ruleTester.run("editorconfig/eol-last (typescript)", require("../../../src/rules/eol-last"), {
+ruleTester.run("editorconfig/eol-last (typescript)", eolLast, {
   valid: commonValidTests,
   invalid: [{
     filename: join(import.meta.dirname, "../../configs/default/target.ts"),
@@ -38,7 +48,7 @@ const foo: number = 0;
   }],
 });
 
-ruleTester.run("editorconfig/indent (typescript)", require("../../../src/rules/indent"), {
+ruleTester.run("editorconfig/indent (typescript)", indent, {
   valid: [
     ...commonValidTests,
     {
@@ -119,7 +129,7 @@ var e: string = 'e',
   ],
 });
 
-ruleTester.run("editorconfig/linebreak-style (typescript)", require("../../../src/rules/linebreak-style"), {
+ruleTester.run("editorconfig/linebreak-style (typescript)", linebreakStyle, {
   valid: commonValidTests,
   invalid: [{
     filename: join(import.meta.dirname, "../../configs/default/target.ts"),
@@ -132,7 +142,7 @@ ruleTester.run("editorconfig/linebreak-style (typescript)", require("../../../sr
   }],
 });
 
-ruleTester.run("editorconfig/no-trailing-space (typescript)", require("../../../src/rules/no-trailing-spaces"), {
+ruleTester.run("editorconfig/no-trailing-space (typescript)", noTrailingSpaces, {
   valid: [
     ...commonValidTests,
     {

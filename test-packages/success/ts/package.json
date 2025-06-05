@@ -5,14 +5,14 @@
   "author": "Jumpei Ogawa (https://phanective.org)",
   "license": "MIT",
   "private": true,
-  "main": "main.js",
+  "type": "module",
   "scripts": {
-    "lint": "eslint . --ext=.js,.ts",
+    "lint": "eslint .",
     "test": "npm run lint"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "@typescript-eslint/parser": "^5.0.0",
-    "typescript": "^4.1.3"
+    "@typescript-eslint/eslint-plugin": "^6.18.1",
+    "@typescript-eslint/parser": "^6.18.1",
+    "typescript": "^5.3.3"
   }
 }

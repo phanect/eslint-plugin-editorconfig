@@ -1,45 +1,55 @@
+import deepmerge from "deepmerge";
 import charset from "./rules/charset.ts";
 import eolLast from "./rules/eol-last.ts";
 import indent from "./rules/indent.ts";
-import linebreakStyle from "./rules/linebreak-style.ts";
+import lineBreakStyle from "./rules/linebreak-style.ts";
 import noTrailingSpaces from "./rules/no-trailing-spaces.ts";
+import { name, version } from "../package.json";
+import type { ESLint, Linter } from "eslint";
 
-export default {
+const conflictingRules: Linter.RulesRecord = {
+  // Disable built-in rules from ESLint 8.x
+  "eol-last": "off",
+  indent: "off",
+  "linebreak-style": "off",
+  "no-trailing-spaces": "off",
+  "unicode-bom": "off",
+
+  // Disable a built-in rule from TypeScript-ESLint 6.x
+  "@typescript-eslint/indent": "off",
+
+  // Disable rules from ESLint Stylistic
+  "@stylistic/js/eol-last": "off",
+  "@stylistic/js/indent": "off",
+  "@stylistic/ts/indent": "off",
+  "@stylistic/js/linebreak-style": "off",
+  "@stylistic/js/no-trailing-spaces": "off",
+  "@stylistic/js/unicode-bom": "off",
+};
+
+type EditorConfigPlugin = ESLint.Plugin &
+  Required<Pick<ESLint.Plugin, "rules" | "configs">> &
+  { configs: Record<string, Linter.FlatConfig> };
+
+let plugin: EditorConfigPlugin = {
+  meta: {
+    name,
+    version,
+  },
   rules: {
     charset,
     "eol-last": eolLast,
     indent,
-    "linebreak-style": linebreakStyle,
+    "linebreak-style": lineBreakStyle,
     "no-trailing-spaces": noTrailingSpaces,
   },
   configs: {
     noconflict: {
-      rules: {
-        "eol-last": "off",
-        indent: "off",
-        "linebreak-style": "off",
-        "no-trailing-spaces": "off",
-        "unicode-bom": "off",
-        "@typescript-eslint/eol-last": "off",
-        "@typescript-eslint/indent": "off",
-        "@typescript-eslint/linebreak-style": "off",
-        "@typescript-eslint/no-trailing-spaces": "off",
-        "@typescript-eslint/unicode-bom": "off",
-      },
+      rules: conflictingRules,
     },
     all: {
       rules: {
-        "eol-last": "off",
-        indent: "off",
-        "linebreak-style": "off",
-        "no-trailing-spaces": "off",
-        "unicode-bom": "off",
-        "@typescript-eslint/eol-last": "off",
-        "@typescript-eslint/indent": "off",
-        "@typescript-eslint/linebreak-style": "off",
-        "@typescript-eslint/no-trailing-spaces": "off",
-        "@typescript-eslint/unicode-bom": "off",
-
+        ...conflictingRules,
         "editorconfig/charset": "error",
         "editorconfig/eol-last": "error",
         "editorconfig/indent": "error",
@@ -49,3 +59,15 @@ export default {
     },
   },
 };
+
+plugin = deepmerge(plugin, {
+  configs: {
+    all: {
+      plugins: {
+        editorconfig: plugin,
+      },
+    },
+  },
+});
+
+export default plugin;
