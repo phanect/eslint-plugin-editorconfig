@@ -5,10 +5,10 @@ export default await buildRule({
   baseRule: stylistic.rules["linebreak-style"],
   baseRuleName: "linebreak-style",
   description: "Enforce EditorConfig rules for linebreak style",
-  getESLintOption: (ecParams) => {
-    if (ecParams.end_of_line === "lf") {
+  getESLintOption: ({ end_of_line: endOfLine }) => {
+    if (endOfLine === "lf") {
       return { enabled: true, eslintOption: "unix" };
-    } else if (ecParams.end_of_line === "crlf") {
+    } else if (endOfLine === "crlf") {
       return { enabled: true, eslintOption: "windows" };
     } else {
       return { enabled: false };
