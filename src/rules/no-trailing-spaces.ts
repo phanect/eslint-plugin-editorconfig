@@ -6,5 +6,5 @@ export default await buildRule({
   baseRuleName: "no-trailing-spaces",
   description: "Enforce EditorConfig rules for trailing spaces",
   omitFirstOption: false,
-  getESLintOption: (ecParams) => ({ enabled: !!ecParams.trim_trailing_whitespace }),
+  getESLintOption: ({ trim_trailing_whitespace: trimTrailingWhitespace }) => ({ enabled: !!trimTrailingWhitespace }),
 });
