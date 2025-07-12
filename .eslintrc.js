@@ -11,7 +11,10 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
   },
-  ignorePatterns: [ "test-packages/**" ],
+  ignorePatterns: [
+    "test-packages/**",
+    "./workspace/src/rules/charset.ts", // ignore until this rule is released again.
+  ],
   rules: {
     "node/no-unpublished-require": "off",
   },

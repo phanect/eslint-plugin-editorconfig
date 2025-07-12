@@ -17,10 +17,10 @@ const foo = 0;
   },
 ];
 
-ruleTester.run("editorconfig/charset (javascript)", charset, {
-  valid: commonValidTests,
-  invalid: [], // TODO
-});
+// ruleTester.run("editorconfig/charset (javascript)", charset, {
+//   valid: commonValidTests,
+//   invalid: [], // TODO
+// });
 
 ruleTester.run("editorconfig/eol-last (javascript)", eolLast, {
   valid: commonValidTests,
