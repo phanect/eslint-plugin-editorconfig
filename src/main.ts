@@ -1,4 +1,4 @@
-import charset from "./rules/charset.ts";
+// import charset from "./rules/charset.ts";
 import eolLast from "./rules/eol-last.ts";
 import indent from "./rules/indent.ts";
 import linebreakStyle from "./rules/linebreak-style.ts";
@@ -41,7 +41,7 @@ const pluginWithoutConfigs: ESLint.Plugin = {
     version,
   },
   rules: {
-    charset,
+    // TODO charset,
     "eol-last": eolLast,
     indent,
     "linebreak-style": linebreakStyle,
@@ -61,7 +61,7 @@ const plugin: PublicESLintPlugin = {
       files: targetFiles,
       rules: {
         ...conflictingRules,
-        "editorconfig/charset": "error",
+        // TODO "editorconfig/charset": "error",
         "editorconfig/eol-last": "error",
         "editorconfig/indent": "error",
         "editorconfig/linebreak-style": "error",
