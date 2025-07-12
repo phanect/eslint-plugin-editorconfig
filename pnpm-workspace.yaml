@@ -1,3 +1,7 @@
+packages:
+  - workspace
+  - example
+
 onlyBuiltDependencies:
   - esbuild
   - unrs-resolver
