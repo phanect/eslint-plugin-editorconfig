@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "build": "pnpm -r run build",
-    "test": "./test-packages/test.sh && pnpm -r run test",
+    "test": "pnpm -r run test",
     "lint": "pnpm build && tsc --noEmit && eslint && pnpm -r run lint",
     "fix": "eslint --fix",
     "release": "pnpm -r run release",
