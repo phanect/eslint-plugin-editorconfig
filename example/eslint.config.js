@@ -5,7 +5,6 @@ import editorconfig from "eslint-plugin-editorconfig";
 export default [
   {
     files: [ "./**/*" ],
-    ignores: [ join(import.meta.dirname, "src/invalid.ts") ],
 
     ...stylistic.configs.recommended,
 
