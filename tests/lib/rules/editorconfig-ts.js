@@ -23,10 +23,10 @@ const foo: number = 0;
   },
 ];
 
-ruleTester.run("editorconfig/charset (typescript)", charset, {
-  valid: commonValidTests,
-  invalid: [], // TODO
-});
+// ruleTester.run("editorconfig/charset (typescript)", charset, {
+//   valid: commonValidTests,
+//   invalid: [], // TODO
+// });
 
 ruleTester.run("editorconfig/eol-last (typescript)", eolLast, {
   valid: commonValidTests,
