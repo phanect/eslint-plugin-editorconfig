@@ -1,16 +1,7 @@
-/.github/
-/.vscode/
-/examples/
 node_modules/
-src/
-test-packages/
-test/
 tests/
 *.config.js
 *.config.mjs
 *.config.ts
 *.tgz
-.editorconfig
-.gitattributes
 .gitignore
-tsconfig.json

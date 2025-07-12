@@ -1,0 +1,28 @@
+{
+  "name": "eslint-editorconfig-monorepo",
+  "version": "0.0.0",
+  "author": "Jumpei Ogawa",
+  "license": "Apache-2.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r run build",
+    "test": "./test-packages/test.sh && pnpm -r run test",
+    "lint": "tsc --noEmit && eslint . && pnpm -r run lint",
+    "fix": "eslint --fix .",
+    "release": "pnpm -r run release",
+    "clean": "git clean -dX --force",
+    "refresh": "pnpm clean && rm --force ./pnpm-lock.yaml && corepack up && pnpm install"
+  },
+  "devDependencies": {
+    "@phanect/configs": "latest",
+    "@types/node": "^24.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-phanective": "latest",
+    "typescript": "^5.6.2"
+  },
+  "engines": {
+    "node": "20.x || 22.x || >=24.x"
+  },
+  "packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad"
+}
