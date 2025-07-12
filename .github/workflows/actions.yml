@@ -38,9 +38,6 @@ jobs:
       - run: pnpm install # without `--frozen-lockfile` since there is no pnpm-lock.yaml in this project
       - run: pnpm build
       - run: pnpm test
-
-      - name: Install this version of eslint-plugin-editorconfig
-        run: pnpm pack && pnpm install "eslint-plugin-editorconfig-$(jq --raw-output .version package.json).tgz"
       - run: pnpm lint
 
   release:
