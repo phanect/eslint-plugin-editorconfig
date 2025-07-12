@@ -31,7 +31,7 @@
   },
   "scripts": {
     "build": "tsup",
-    "test": "./test-packages/test.sh && mocha --reporter dot tests/lib/**/*.js",
+    "test": "./test-packages/test.sh && vitest run",
     "lint": "tsc --noEmit && eslint .",
     "fix": "eslint --fix .",
     "release": "pnpm publish . --access public",
@@ -52,10 +52,10 @@
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "eslint-config-phanective": "latest",
-    "mocha": "^10.2.0",
     "tsup": "^8.5.0",
     "type-fest": "^4.41.0",
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.2",
+    "vitest": "^3.2.4"
   },
   "engines": {
     "node": "20.x || 22.x || >=24.x"
