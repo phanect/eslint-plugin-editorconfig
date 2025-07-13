@@ -22,10 +22,10 @@
   "editor.formatOnPaste": true,
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.codeActionsOnSave": {
-    "source.fixAll": "always"
+    "source.fixAll": "never"
   },
   "eslint.format.enable": true,
-  "eslint.codeActionsOnSave.mode": "all",
+  "eslint.codeActionsOnSave.mode": "problems",
   "eslint.codeActionsOnSave.rules": [
     "@stylistic/arrow-parens",
     "@stylistic/quotes",
