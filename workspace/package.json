@@ -31,6 +31,7 @@
   },
   "scripts": {
     "build": "tsup",
+    "lint": "tsc --noEmit",
     "test": "vitest run",
     "release": "pnpm publish . --access public"
   },
