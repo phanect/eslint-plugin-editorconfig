@@ -27,6 +27,8 @@
   "eslint.format.enable": true,
   "eslint.codeActionsOnSave.mode": "problems",
   "eslint.codeActionsOnSave.rules": [
+    "editorconfig/indent",
+    "editorconfig/no-trailing-spaces",
     "@stylistic/arrow-parens",
     "@stylistic/quotes",
     "@stylistic/semi",
