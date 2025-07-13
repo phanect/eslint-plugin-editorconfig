@@ -64,9 +64,40 @@ export const buildRule = async ({
       const ecParams = editorconfig.parseSync(context.filename);
       const { enabled, eslintOption } = getESLintOption(ecParams);
 
-      context.options[0] = eslintOption;
+      // if (eslintOption) {
+      //   if (context.options.length === 0) {
+      //     console.log("---", context.options, "---");
+      //     context.options = [ eslintOption, ...(context.options as unknown[]) ];
+      //   } else {
+      //     // context.options[0] = eslintOption;
+      //   }
+      // }
 
-      return enabled ? baseRule.create(context) : {};
+      // return enabled ? baseRule.create(context) : {};
+
+      if (!enabled) {
+        return {};
+      } else if (eslintOption) {
+        console.log("old", context);
+        // const newContext = Object.assign(context, { options: [ eslintOption, ...(context.options as unknown[]) ]});
+
+        // const nc = {
+        //   options: [ eslintOption, ...(context.options as unknown[]) ],
+        // };
+
+        // (context.options as unknown[]).bind(nc);
+        // console.log("new", newContext);
+        // const newContext = structuredClone(context);
+        // newContext.report = context.report;
+        // newContext.options = [ eslintOption, ...(context.options as unknown[]) ];
+        return baseRule.create({
+          ...context,
+          sourceCode: context.sourceCode,
+          options: [ eslintOption, ...(context.options as unknown[]) ],
+        });
+      } else {
+        return baseRule.create(context);
+      }
     },
   };
 };
