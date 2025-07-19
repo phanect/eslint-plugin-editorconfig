@@ -123,7 +123,7 @@ const getNoTrailingSpacesEntry = ({ severity, ecParam, default: defaultParam, op
 };
 
 type UserConfigs = {
-  "unicode-bom"?: [ Linter.StringSeverity, { default?: RuleOptions["unicode-bom"][0]; }? ];
+  // "unicode-bom"?: [ Linter.StringSeverity, { default?: RuleOptions["unicode-bom"][0]; }? ];
   "eol-last"?: [ Linter.StringSeverity, { default?: RuleOptions["eol-last"][0]; }? ];
   indent?: [
     Linter.StringSeverity,

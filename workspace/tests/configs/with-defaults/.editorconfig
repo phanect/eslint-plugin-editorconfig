@@ -1,0 +1,6 @@
+# Dummy .editorconfig for testing
+
+root = true
+
+[*]
+charset = utf-8
