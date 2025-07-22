@@ -64,9 +64,10 @@ export const buildRule = async ({
       const ecParams = editorconfig.parseSync(context.filename);
       const { enabled, eslintOption } = getESLintOption(ecParams);
 
-      context.options[0] = eslintOption;
 
-      return enabled ? baseRule.create(context) : {};
+      const _context = eslintOption ? clone(context, { options: [ eslintOption, ...context.options ]}) : context;
+
+      return enabled ? baseRule.create(_context) : {};
     },
   };
 };
